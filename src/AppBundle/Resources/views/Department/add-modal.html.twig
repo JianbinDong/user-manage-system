@@ -1,0 +1,20 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}增加部门{% endblock %}
+
+{% block body %}
+<script type="text/javascript" src="{{asset('links/department/validates.js')}}"></script>
+<form id="add-department-form" class="form-horizontal"  data-url="{{path('admin_add_department')}}" data-check-url="{{ path('admin_department_check') }}">
+  <div class="form-group">
+    <label for="js-add-department-name" class="col-sm-2 control-label">部门名称</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control department-name" id="js-add-department-name" name="name" value="">
+    </div>
+  </div>
+  {{ form_csrf_token() }}
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary add-department" id="js-add-department-name">增加</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  </div>
+</form>
+{% endblock %}

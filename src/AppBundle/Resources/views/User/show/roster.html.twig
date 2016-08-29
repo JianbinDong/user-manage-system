@@ -1,0 +1,75 @@
+<div class="ibox-content">
+  <div class="row">
+    <div id="crop-avatar" class="col-md-12">
+      <div class="avatar-view col-sm-offset-4">
+        {% if roster.imgAvatar|default() %}
+          <img src="{{ asset(roster.imgAvatar)}}" class="profile-user-img img-responsive img-circle" alt="avatar">
+        {% else %}
+          <img src="{{ asset('assets/avatar.png')}}" class="profile-user-img img-responsive img-circle" alt="avatar">  
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+<table class="table table-bordered">
+  <tr>
+    <td class="col-sm-4">姓名：</td>
+    <td>{{roster.trueName}}</td>
+  </tr>
+  <tr>
+    <td>性别：</td>
+    <td>{{ dict_text('gender', roster.gender) }}</td>
+  </tr>
+  <tr>
+    <td>工号：</td>
+    <td>{{roster.number}}</td>
+  </tr>
+  <tr>
+    <td>籍贯：</td>
+    <td>{{roster.native}}</td>
+  </tr>
+  <tr>
+    <td>手机：</td>
+    <td>{{roster.phone}}</td>
+  </tr>
+  <tr>
+    <td>生日：</td>
+    <td>{{roster.bornTime|date('m-d')}}</td>
+  </tr>
+  <tr>
+    <td>QQ：</td>
+    <td>{{roster.QQ|default()}}</td>
+  </tr>
+  <tr>
+    <td>星座：</td>
+    <td>{{roster.constellation|default()}}</td>
+  </tr>
+  <tr>
+    <td>爱好：</td>
+    <td>{{roster.hobby|default()}}</td>
+  </tr>
+  <tr>
+    <td>喜欢的音乐：</td>
+    <td>{{roster.favoriteMusic|default()}}</td>
+  </tr>
+  <tr>
+    <td>喜欢的电影：</td>
+    <td>{{roster.favoriteMovie|default()}}</td>
+  </tr>
+  <tr>
+    <td>喜欢的运动：</td>
+    <td>{{roster.favoriteSport|default()}}</td>
+  </tr>
+  <tr>
+    <td>喜欢的食物：</td>
+    <td>{{roster.hobby|default()}}</td>
+  </tr>
+  <tr>
+    <td>喜欢的地方：</td>
+    <td>{{roster.favoritePlace|default()}}</td>
+  </tr>
+  <tr>
+    <td>梦想：</td>
+    <td>{{roster.dream|default()}}</td>
+  </tr>
+</table>

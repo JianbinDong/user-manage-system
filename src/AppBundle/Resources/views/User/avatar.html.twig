@@ -1,0 +1,200 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% set nav = 'avatar' %}
+
+{% block content_title %}
+{{ script(['links/cropper/cropper.min.js']) }}
+{{ script(['links/sitelogo/sitelogo.js']) }}
+<h1>花名册</h1>
+{% endblock %}
+
+{% block content_body %}
+
+<div class="ibox-content">
+  <div class="row">
+    <div id="crop-avatar" class="col-md-12">
+      <div class="avatar-view col-sm-offset-4">
+        {% if app.user.getAvatar()|default() %}
+          <img src="{{ asset(app.user.getAvatar())}}" class="profile-user-img img-responsive img-circle" alt="avatar">
+        {% else %}
+          <img src="{{ asset('assets/avatar.png')}}" class="profile-user-img img-responsive img-circle" alt="avatar">  
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="settings">
+  <form class="form-horizontal" id="roster-form" action="{{ path('user_roster', {userId:app.user.id}) }}" method="post">
+    <div class="form-group">
+      <label for="trueName" class="col-sm-3 control-label">姓名：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="trueName" name="trueName" placeholder="姓名" value="{{roster.trueName}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="gender" class="col-sm-3 control-label">性别：</label>
+
+      <div class="col-sm-5">
+          <select class="form-control"  name="gender">
+            {{ select_options(dict('gender'), roster.gender) }}
+          </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="number" class="col-sm-3 control-label">工号：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="number" name="number" placeholder="工号" disabled="disabled" value="{{roster.number}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="native" style="resize:vertical" class="col-sm-3 control-label">籍贯：</label>
+
+      <div class="col-sm-5">
+        <textarea class="form-control" id="native" name="native" placeholder="籍贯">{{roster.native}}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="col-sm-3 control-label">手机：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="手机" value="{{roster.phone}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="bornTime" class="col-sm-3 control-label">生日：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="bornTime" name="bornTime" placeholder="生日" value="{{roster.bornTime|date('m-d')}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="QQ" class="col-sm-3 control-label">QQ：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="QQ" name="QQ" placeholder="QQ" value="{{roster.QQ|default()}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="constellation" class="col-sm-3 control-label">星座：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="constellation" name="constellation" placeholder="星座" value="{{roster.constellation|default()}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hobby" class="col-sm-3 control-label">爱好：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="hobby" name="hobby" placeholder="爱好" value="{{roster.hobby|default()}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="favoriteMusic" class="col-sm-3 control-label">喜欢的音乐：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="favoriteMusic" name="favoriteMusic" placeholder="喜欢的音乐" value="{{roster.favoriteMusic|default()}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="favoriteMovie" class="col-sm-3 control-label">喜欢的电影：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="favoriteMovie" name="favoriteMovie" placeholder="喜欢的电影" value="{{roster.favoriteMovie|default()}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="favoriteSport" class="col-sm-3 control-label">喜欢的运动：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="favoriteSport" name="favoriteSport" placeholder="喜欢的运动" value="{{roster.favoriteSport|default()}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="favoriteFood" class="col-sm-3 control-label">喜欢的食物：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="favoriteFood" name="favoriteFood" placeholder="喜欢的食物" value="{{roster.favoriteFood|default()}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="favoritePlace" class="col-sm-3 control-label">喜欢的地方：</label>
+
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="favoritePlace" name="favoritePlace" placeholder="喜欢的地方" value="{{roster.favoritePlace|default()}}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dream" class="col-sm-3 control-label">梦想：</label>
+
+      <div class="col-sm-5">
+        <textarea class="form-control" style="resize:vertical" id="dream" name="dream" placeholder="梦想">{{roster.dream|default()}}</textarea>
+      </div>
+    </div>
+    {{ form_csrf_token() }}
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-5">
+        <button type="submit" class="btn btn-primary form-control">保存</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form class="avatar-form" action="{{ path('user_avatar_upload', {id:app.user.id}) }}" enctype="multipart/form-data" method="post">
+        <div class="modal-header">
+          <button class="close" data-dismiss="modal" type="button">&times;</button>
+          <h4 class="modal-title" id="avatar-modal-label">头像上传</h4>
+        </div>
+        <div class="modal-body">
+          <div class="avatar-body">
+            <div class="avatar-upload">
+              <input class="avatar-src" name="avatar_src" type="hidden">
+              <input class="avatar-data" name="avatar_data" type="hidden">
+              <label for="avatarInput">图片上传</label>
+              <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+            <div class="row">
+              <div class="col-md-9">
+                <div class="avatar-wrapper"></div>
+              </div>
+              <div class="col-md-3">
+                <div class="avatar-preview preview-lg"></div>
+                <div class="avatar-preview preview-md"></div>
+                <div class="avatar-preview preview-sm"></div>
+              </div>
+            </div>
+            <div class="row avatar-btns">
+              <div class="col-md-9">
+                <div class="btn-group">
+                  <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                </div>
+              </div>
+              {{ form_csrf_token() }}
+              <div class="col-md-3">
+                <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+{% endblock %}

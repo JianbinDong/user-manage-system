@@ -1,0 +1,20 @@
+{% extends 'AppBundle::modal-base.html.twig' %}
+
+{% block title %}编辑部门信息{% endblock %}
+
+{% block body %}
+<script type="text/javascript" src="{{asset('links/department/validates.js')}}"></script>
+<form class="form-horizontal" data-url="{{path('admin_edit_department', {id:id})}}" data-check-url="{{ path('admin_department_check', {id:id}) }}">
+  <div class="form-group">
+    <label for="js-edit-department-name" class="col-sm-2 control-label">部门名称</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control department-name" id="js-edit-department-name" name="name" value="{{department.name}}">
+    </div>
+  </div>
+  {{ form_csrf_token() }}
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary edit-department" id="js-edit-department-name">保存</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  </div>
+</form>
+{% endblock %}

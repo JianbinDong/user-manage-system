@@ -1,0 +1,38 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% set nav ='verify' %}
+
+{% block content_title %} 
+{{ script(['links/user/js/system-settings.js']) }}
+<div class="content-header">  
+  <h1>工号审核</h1>
+</div>
+{% endblock %}
+{% block content_body %}
+
+<form id="add-user-form" class="form-horizontal">
+  <div class="add-user-body">
+    <table id="user-table" class="table table-striped table-hover" data-search-form="#user-search-form">
+      <thead>
+        <tr>
+          {# <th width="20%">申请人</th> #}
+          <th width="30%">申请工号</th>
+          <th width="40%">备注</th>
+          <th width="30%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for verify in verifies %}
+          <tr>
+            {# <td>{{ verify.userId }}</td> #}
+            <td>{{ verify.number }}</td>
+            <td>{{ verify.remark }}</td>
+            <td>
+              <a class="btn btn-sm btn-primary" id="verify-number" data-url="{{ path('admin_pass_number', {'userId':verify.userId}) }}">审核通过</a> 
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</form>
+{% endblock %}
