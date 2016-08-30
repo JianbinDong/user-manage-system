@@ -20,7 +20,7 @@
         {% if status == 'on' %}
           <button type="button" class="btn btn-sm btn-success change-status" data-url="{{ path('admin_user_exit_job', {id:id}) }}">保存</button>
         {% else %}
-           <button type="button" class="btn btn-sm btn-success change-status" data-url="{{ path('admin_user_entry_job', {id:id}) }}">保存</button>
+          <button type="button" class="btn btn-sm btn-success change-status" data-url="{{ path('admin_user_entry_job', {id:id}) }}">保存</button>
         {% endif %}
       </div>
     </form>

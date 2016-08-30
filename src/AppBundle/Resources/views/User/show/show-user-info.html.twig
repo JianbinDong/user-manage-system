@@ -1,6 +1,6 @@
 {% extends 'AppBundle::modal-base.html.twig' %}
 
-{% block title %}员工详情{% endblock %}
+{% block title %}{% if app.user.isAdmin() %}员工详情{% else %}花名册{% endif %}{% endblock %}
 {% block body %}
 {% if app.user.isAdmin() %}
   <ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">

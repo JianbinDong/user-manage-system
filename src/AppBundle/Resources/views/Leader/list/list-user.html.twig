@@ -10,14 +10,26 @@
   </div>
   <hr>
   <form id='search-form' class="form-inline" {% if status == 'on' %}action='{{ path('department_personnel_list') }}'{% else %}action='{{ path('department_demission_list') }}'{% endif %}>
-    <select name="pageNum" class="form-control search-select">
-      <option value="">每页行数</option>
-      <option {% if app.request.query.get('pageNum') == 20 %} selected="selected"{% endif %}>20</option>
-      <option {% if app.request.query.get('pageNum') == 50 %} selected="selected"{% endif %}>50</option>
-      <option {% if app.request.query.get('pageNum') == 100 %} selected="selected"{% endif %}>100</option>
-      <option {% if app.request.query.get('pageNum') == 200 %} selected="selected"{% endif %}>200</option>
-      <option {% if app.request.query.get('pageNum') == 500 %} selected="selected"{% endif %}>500</option>
-    </select>
+    <div class="search-time">
+      <select name="searchTime" class="form-control">
+        {% if status == 'on' %}
+          <option value="joinTime" {% if app.request.query.get('searchTime') == 'joinTime' %} selected="selected"{% endif %}>入职时间</option>
+        {% else %}
+          <option value="quitTime" {% if app.request.query.get('searchTime') == 'quitTime' %} selected="selected"{% endif %}>离职时间</option>
+        {% endif %}
+      </select>
+      <div class='input-group date'>
+        <input type='text' class="form-control time" name="startTime" value="{{ app.request.query.get('startTime') }}" placeholder="从">
+      </div> -
+      <div class='input-group date'>
+        <input type='text' class="form-control time" name="endTime" value="{{ app.request.query.get('endTime') }}" placeholder="到">
+      </div>
+    </div><br>
+    <div class="form-group">
+      <select class="form-control search-select" name="pageNum">
+        {{ select_options(dict('pageNum'), app.request.query.get('pageNum'), '每页行数') }}
+      </select>
+    </div>
     <select name="gender" class="form-control search-select">
       <option value="">性别</option>
       <option {% if app.request.query.get('gender') == 'male' %} selected="selected"{% endif %} value="male">男</option>

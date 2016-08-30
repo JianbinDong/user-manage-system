@@ -28,12 +28,3 @@
   </tbody>
 </table>
 {{ web_macro.paginator(paginator) }}
-{% if paginator.lastPage > 1 %}
-  <select name="page-number" class="form-control search-select page-select">
-    <option value="">行数</option>
-    <option><a href="">20</a></option>
-    <option>50</option>
-    <option>100</option>
-    <option>200</option>
-  </select>
-{% endif %}

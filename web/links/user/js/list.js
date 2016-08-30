@@ -8,10 +8,13 @@ $(function(){
     $('body').on('click', '.change-status',function() {
 
         $.post($(this).data('url'), $('form').serialize(), function(data){
-          $('#modal').modal('hide');
-          $('#js-status-'+data.userId).remove();
+            $('#modal').modal('hide');
+            $('#js-status-'+data.userId).remove();
+            var userCount = $('#user-count').text();
+            $('#user-count').text(userCount-1);
         });
     });
+
 
     $('#js-import-btn').on('click', function(){
         $.get($(this).data('url'), function(html){
