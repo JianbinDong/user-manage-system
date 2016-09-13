@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "47547222a43a68ec9102257eaaeb9c82",
-    "content-hash": "fcce6efde9d2d065cd5aa1242a6a8543",
+    "hash": "b4c809dcc6b81748cab84e7553148e24",
+    "content-hash": "6d5421a5985acc23bdb601f733b6809e",
     "packages": [
         {
             "name": "codeages/biz-framework",
-            "version": "v0.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeages/biz-framework.git",
-                "reference": "f25dc4e7c8a7069f2f91957b7517a565c9aee435"
+                "reference": "acfbd5e88da2517fa767183324d95a81e70303f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/codeages/biz-framework/f25dc4e7c8a7069f2f91957b7517a565c9aee435.zip",
-                "reference": "f25dc4e7c8a7069f2f91957b7517a565c9aee435",
+                "url": "https://packagist.phpcomposer.com/files/codeages/biz-framework/acfbd5e88da2517fa767183324d95a81e70303f3.zip",
+                "reference": "acfbd5e88da2517fa767183324d95a81e70303f3",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
                 "php": "^5.3.3 || ^7.0",
                 "pimple/pimple": "^3.0.2",
                 "psr/log": "^1.0.0",
-                "vlucas/phpdotenv": "^2.3.0"
+                "symfony/event-dispatcher": "^2.8.9"
             },
             "type": "library",
             "autoload": {
@@ -41,7 +41,7 @@
                 "MIT"
             ],
             "description": "A service layer framework.",
-            "time": "2016-08-01 14:40:21"
+            "time": "2016-08-18 17:01:07"
         },
         {
             "name": "davedevelopment/phpmig",
@@ -458,16 +458,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1"
+                "reference": "dd40b0a7fb16658cda9def9786992b8df8a49be7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/fd51907c6c76acaa8a5234822a4f901c1500afc1",
-                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1",
+                "url": "https://packagist.phpcomposer.com/files/doctrine/DoctrineBundle/dd40b0a7fb16658cda9def9786992b8df8a49be7.zip",
+                "reference": "dd40b0a7fb16658cda9def9786992b8df8a49be7",
                 "shasum": ""
             },
             "require": {
@@ -476,6 +476,7 @@
                 "jdorn/sql-formatter": "~1.1",
                 "php": ">=5.3.2",
                 "symfony/console": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
                 "symfony/doctrine-bridge": "~2.2|~3.0",
                 "symfony/framework-bundle": "~2.3|~3.0"
             },
@@ -534,7 +535,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2016-04-21 19:55:56"
+            "time": "2016-08-10 15:35:22"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -1230,16 +1231,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.7",
+            "version": "v5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a"
+                "reference": "f8ace5c71ee309492b027ef71215577f5a52b4ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a",
-                "reference": "a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a",
+                "url": "https://packagist.phpcomposer.com/files/sensiolabs/SensioDistributionBundle/f8ace5c71ee309492b027ef71215577f5a52b4ea.zip",
+                "reference": "f8ace5c71ee309492b027ef71215577f5a52b4ea",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1279,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-06-23 16:11:33"
+            "time": "2016-08-17 18:16:49"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2262,56 +2263,6 @@
                 "templating"
             ],
             "time": "2016-05-30 09:11:59"
-        },
-        {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/vlucas/phpdotenv/9ca5644c536654e9509b9d257f53c58630eb2a6a.zip",
-                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause-Attribution"
-            ],
-            "authors": [
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "time": "2016-06-14 14:14:52"
         }
     ],
     "packages-dev": [
@@ -2425,7 +2376,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "codeages/biz-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

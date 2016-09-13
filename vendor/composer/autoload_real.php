@@ -7,7 +7,7 @@ class ComposerAutoloaderInit081d4fef8588ac650ab0abc850fb4f16
     private static $loader;
 
     public static function loadClassLoader($class)
-    {   
+    {
         if ('Composer\Autoload\ClassLoader' === $class) {
             require __DIR__ . '/ClassLoader.php';
         }
@@ -20,7 +20,6 @@ class ComposerAutoloaderInit081d4fef8588ac650ab0abc850fb4f16
         }
 
         spl_autoload_register(array('ComposerAutoloaderInit081d4fef8588ac650ab0abc850fb4f16', 'loadClassLoader'), true, true);
-        
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInit081d4fef8588ac650ab0abc850fb4f16', 'loadClassLoader'));
 

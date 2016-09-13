@@ -17,7 +17,9 @@ class AdminController extends UserBaseController
         if ($request->getMethod() == 'POST') {
             $fields = $request->request->all();
 
-            $this->getUserService()->createUser($fields);
+            $user = $this->getUserService()->createUser($fields);
+
+            $this->sendPasswordEmail($user['email']);
             
             return $this->redirect($this->generateUrl('admin_user_present_list'));
         }
@@ -207,7 +209,12 @@ class AdminController extends UserBaseController
             $import = new Import();
             $users = $import->import($tmpFile);
 
-            $this->getUserService()->importUsers($users);
+            foreach ($users as $user) {
+                $affected = $this->getUserService()->importUser($user);
+                if (!empty($affected)) {
+                    $this->sendPasswordEmail($affected['email']);
+                }
+            }
 
             return $this->redirect($this->generateUrl('admin_user_present_list'));
         }
@@ -234,6 +241,23 @@ class AdminController extends UserBaseController
         return $this->render('AppBundle:User:verify-number.html.twig', array(
             'verifies' => $verifies
         ));
+    }
+
+    protected function sendPasswordEmail($to)
+    {
+        $message = \Swift_Message::newInstance()
+        ->setSubject('员工密码通知')
+        ->setFrom('dongjianbin@howzhi.com')
+        ->setTo($to)
+        ->setBody(
+            $this->renderView(
+                'AppBundle:User:test.txt.twig', array(
+                'password' => 'kaifazhe'
+            )),
+            'text/html'
+        );
+
+        $this->get('mailer')->send($message);
     }
 
     protected function getVerifyService()

@@ -54,7 +54,6 @@ class ComposerStaticInit081d4fef8588ac650ab0abc850fb4f16
         ),
         'D' => 
         array (
-            'Dotenv\\' => 7,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
@@ -154,10 +153,6 @@ class ComposerStaticInit081d4fef8588ac650ab0abc850fb4f16
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
-        ),
-        'Dotenv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (

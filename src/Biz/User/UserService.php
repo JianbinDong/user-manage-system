@@ -6,7 +6,7 @@ interface UserService
 {
     public function createUser($user);
     
-    public function importUsers($users);
+    public function importUser($user);
     
     public function register($user);
 

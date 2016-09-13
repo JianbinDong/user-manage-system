@@ -39,7 +39,7 @@ class UserServiceImpl extends BaseService implements UserService
             $basic['bornTime'] = strtotime($basic['bornTime']);
         }
         
-        $this->getDao('user_basic_dao')->create($basic);
+        $affectedBasic = $this->getDao('user_basic_dao')->create($basic);
         $department = $this->getDepartmentService()->getDepartment($basic['departmentId']);
         $departmentCount = $department['amount'] + 1;
         $this->getDepartmentService()->updateDepartment($department['id'], array('amount'=>$departmentCount));
@@ -77,27 +77,25 @@ class UserServiceImpl extends BaseService implements UserService
             $this->getDao('work_experience_dao')->create($work);
         }
 
-        return $lastInsertUser;
+        return array_merge($affectedBasic, $lastInsertUser);
     }
 
-    public function importUsers($users)
+    public function importUser($user)
     {
-        foreach ($users as $user) {
-            $presentUser = $this->getUserByNumber($user['basic']['number']);
-            if (!empty($presentUser)) {
-                continue;
-            }
-
-            $department = $this->getDepartmentService()->getDepartmentByName($user['basic']['department']);
-
-            if (empty($department)) {
-                $user['basic']['departmentId'] = 1;
-            } else {
-                $user['basic']['departmentId'] = $department['id'];
-            }
-
-            $this->createUser($user);
+        $presentUser = $this->getUserByNumber($user['basic']['number']);
+        if (!empty($presentUser)) {
+            return null;
         }
+
+        $department = $this->getDepartmentService()->getDepartmentByName($user['basic']['department']);
+
+        if (empty($department)) {
+            $user['basic']['departmentId'] = 1;
+        } else {
+            $user['basic']['departmentId'] = $department['id'];
+        }
+
+        return $this->createUser($user);
     }
 
     public function register($user)
@@ -212,7 +210,7 @@ class UserServiceImpl extends BaseService implements UserService
     }
 
     public function searchAllUsers($conditions, $orderBy, $start, $limit)
-    {   
+    {
         return $this->getDao('user_search_dao')->searchAll($conditions, $orderBy, $start, $limit);
     }
 
