@@ -87,7 +87,6 @@ EOF
             throw new \RuntimeException(sprintf('File or directory "%s" is not readable', $filename));
         }
 
-        $files = array();
         if (is_file($filename)) {
             $files = array($filename);
         } elseif (is_dir($filename)) {
@@ -163,7 +162,7 @@ EOF
             }
         });
 
-        $output->writeln(json_encode($filesInfo, defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0));
+        $output->writeln(json_encode($filesInfo, defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : 0));
 
         return min($errors, 1);
     }

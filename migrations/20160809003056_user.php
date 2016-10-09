@@ -22,12 +22,12 @@ class User extends Migration
         $table->addColumn('quitTime', 'integer', array('default' => 0, 'comment' => '离职时间'));
         $table->addColumn('createdTime', 'integer', array('default' => 0, 'comment' => '创建时间'));
         $table->addColumn('updatedTime', 'integer', array('default' => 0, 'comment' => '更新时间'));
-        $table->addColumn('imgFrontIDcard', 'string', array('length' => 64, 'null' => false, 'comment' => '身份证正面图片路径'));
-        $table->addColumn('imgBackIDcard', 'string', array('length' => 64, 'null' => false, 'comment' => '身份证反面图片路径'));
-        $table->addColumn('imgHandleIDcard', 'string', array('length' => 64, 'null' => false, 'comment' => '身份证手持图片路径'));
-        $table->addColumn('imgEducation', 'string', array('length' => 64, 'null' => false, 'comment' => '学历图片路径'));
-        $table->addColumn('imgRank', 'string', array('length' => 64, 'null' => false, 'comment' => '职称图片路径'));
-        $table->addColumn('imgAvatar', 'string', array('length' => 64, 'null' => false, 'comment' => '个人头像图片路径'));
+        $table->addColumn('imgFrontIDcard', 'string', array('default' => null, 'length' => 64, 'comment' => '身份证正面图片路径'));
+        $table->addColumn('imgBackIDcard', 'string', array('default' => null, 'length' => 64, 'comment' => '身份证反面图片路径'));
+        $table->addColumn('imgHandleIDcard', 'string', array('default' => null, 'length' => 64, 'comment' => '身份证手持图片路径'));
+        $table->addColumn('imgEducation', 'string', array('default' => null, 'length' => 64, 'comment' => '学历图片路径'));
+        $table->addColumn('imgRank', 'string', array('default' => null, 'length' => 64, 'comment' => '职称图片路径'));
+        $table->addColumn('imgAvatar', 'string', array('default' => null, 'length' => 64, 'comment' => '个人头像图片路径'));
 
         $table->setPrimaryKey(array('id'));
         $container['db']->getSchemaManager()->createTable($table);

@@ -22,7 +22,13 @@ class AppInitCommand extends Command
             'number' => '0000',
             'password' => 'kaifazhe',
             'roles' => array('ROLE_ADMIN'),
-            'trueName' => 'Admin'
+            'trueName' => 'Admin',
+            'imgFrontIDcard' => '',
+            'imgBackIDcard' => '',
+            'imgHandleIDcard' => '',
+            'imgEducation' => '',
+            'imgRank' => '',
+            'imgAvatar' => ''
         );
         $user = $this->getService('user_service')->register($user);
 

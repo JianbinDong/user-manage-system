@@ -15,9 +15,9 @@ class WorkExperience extends Migration
         $table->addColumn('userId', 'integer', array('null' => false));
         $table->addColumn('startTime', 'integer', array('default' => 0, 'comment' => '开始时间'));
         $table->addColumn('endTime', 'integer', array('default' => 0, 'comment' => '结束时间'));
-        $table->addColumn('company', 'string', array('length' => 64, 'comment' => '工作单位'));
-        $table->addColumn('position', 'string', array('length' => 64, 'comment' => '岗位职务'));
-        $table->addColumn('leaveReason', 'text', array('comment' => '离职原因'));
+        $table->addColumn('company', 'string', array('default' => null, 'length' => 64, 'comment' => '工作单位'));
+        $table->addColumn('position', 'string', array('default' => null, 'length' => 64, 'comment' => '岗位职务'));
+        $table->addColumn('leaveReason', 'text', array('default' => null, 'comment' => '离职原因'));
         $table->setPrimaryKey(array('id'));
         $container['db']->getSchemaManager()->createTable($table);
 

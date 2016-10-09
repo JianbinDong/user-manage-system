@@ -110,7 +110,7 @@ EOF
                 $template .= fread(STDIN, 1024);
             }
 
-            return $this->display($input, $output, $io, array($this->validate($twig, $template, uniqid('sf_'))));
+            return $this->display($input, $output, $io, array($this->validate($twig, $template, uniqid('sf_', true))));
         }
 
         $filesInfo = $this->getFilesInfo($twig, $filenames);
@@ -207,7 +207,7 @@ EOF
             }
         });
 
-        $output->writeln(json_encode($filesInfo, defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0));
+        $output->writeln(json_encode($filesInfo, defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : 0));
 
         return min($errors, 1);
     }

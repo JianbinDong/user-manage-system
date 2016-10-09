@@ -15,9 +15,9 @@ class EduExperience extends Migration
         $table->addColumn('userId', 'integer', array('null' => false));
         $table->addColumn('startTime', 'integer', array('default' => 0, 'comment' => '开始时间'));
         $table->addColumn('endTime', 'integer', array('default' => 0, 'comment' => '结束时间'));
-        $table->addColumn('schoolName', 'string', array('length' => 64, 'comment' => '院校名称'));
-        $table->addColumn('profession', 'string', array('length' => 64, 'comment' => '所学专业'));
-        $table->addColumn('position', 'string', array('length' => 64, 'comment' => '担任职务'));
+        $table->addColumn('schoolName', 'string', array('default' => null, 'length' => 64, 'comment' => '院校名称'));
+        $table->addColumn('profession', 'string', array('default' => null, 'length' => 64, 'comment' => '所学专业'));
+        $table->addColumn('position', 'string', array('default' => null, 'length' => 64, 'comment' => '担任职务'));
         $table->setPrimaryKey(array('id'));
         $container['db']->getSchemaManager()->createTable($table);
     }
