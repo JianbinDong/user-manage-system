@@ -13,7 +13,7 @@ class OtherInfo extends Migration
         $table = new Doctrine\DBAL\Schema\Table('other_info');
         $table->addColumn('id', 'integer', array('autoincrement' => true));
         $table->addColumn('userId', 'integer', array('null' => false));
-        $table->addColumn('reward', 'text', array('default' => 1, 'comment' => '所受培训及所具有证书'));
+        $table->addColumn('reward', 'text', array('default' => '', 'comment' => '所受培训及所具有证书'));
         $table->addColumn('selfAssessment', 'text', array('default' => null, 'comment' => '自我评价'));
         $table->setPrimaryKey(array('id'));
         $container['db']->getSchemaManager()->createTable($table);
