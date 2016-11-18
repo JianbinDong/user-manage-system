@@ -84,6 +84,20 @@ $("#edit-user-form").validate({
             }
         },
         'basic[trueName]': "required",
+        'basic[address]': "required",
+        'basic[Idcard]': "required",
+        'basic[householdType]': "required",
+        'basic[politics]': "required",
+        'basic[native]': "required",
+        'basic[height]': "required",
+        'basic[weight]': "required",
+
+        '#familyMember': "required",
+        '#familyName': "required",
+        '#age': "required",
+        '#familyphone': "required",
+        'basic[prefession]': "required",
+        'basic[prefession]': "required",
         'basic[department]': {
             required: true
         },
@@ -110,7 +124,19 @@ $("#edit-user-form").validate({
             required: "请输入员工工号",
             remote: "该员工工号已存在"
         },
+        'basic[address]': "请输入地址",
+        'basic[Idcard]': "请输入身份证号",
+        'basic[householdType]': "请输入户口性质",
+        'basic[politics]': "请输入政治面貌",
+        'basic[native]': "请输入籍贯",
+        'basic[height]': "请输入身高",
+        'basic[weight]': "请输入体重",
+        'basic[prefession]': "请输入专业",
         'basic[trueName]': "请输入姓名",
+        '#member': "请输入家庭成员",
+        '#familyName': "请输入家庭成员",
+        '#age': "请输入家庭成员",
+        '#familyphone': "请输入家庭成员",
         'basic[department]': {
             required: "请输入所属部门"
         },

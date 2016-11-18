@@ -1,29 +1,29 @@
 <div class="form-group">
-  <label class="col-sm-2 control-label" for="number">*&nbsp;员工工号: </label>
+  <label class="col-sm-2 control-label" for="number">员工工号: </label>
   <div class="col-sm-2 controls">
     <input id="number" class="form-control" type="text" name="basic[number]" value="">
   </div>
-  <label class="col-sm-2 control-label" for="trueName">*&nbsp;姓  名:</label>
+  <label class="col-sm-2 control-label" for="trueName">姓  名:</label>
   <div class="col-sm-3 controls">
     <input id="trueName" class="form-control" type="text" name="basic[trueName]" value="">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-sm-2 control-label" for="department">*&nbsp;所属部门:</label>
+  <label class="col-sm-2 control-label" for="department">所属部门:</label>
   <div class="col-sm-2 controls" id="department">
     <select class="form-control"  name="basic[departmentId]">
       {{ select_options(departmentsChoices) }}
     </select>
   </div>
-  <label class="col-sm-2 control-label" for="rank">*&nbsp;职 级:</label>
+  <label class="col-sm-2 control-label" for="rank">职 级:</label>
   <div class="col-sm-3 controls">
     <input id="rank" class="form-control" type="text" name="basic[rank]" value="">
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-sm-2 control-label" for="phone">*&nbsp;手 机:</label>
+  <label class="col-sm-2 control-label" for="phone">手 机:</label>
   <div class="col-sm-2 controls">
     <input id="phone" class="form-control" type="text" name="basic[phone]" value="">
   </div>
@@ -114,7 +114,7 @@
 
 <div class="form-group">
   
-  <label class="col-sm-2 control-label" for="professionTitle">*&nbsp;职 称:</label>
+  <label class="col-sm-2 control-label" for="professionTitle">职 称:</label>
   <div class="col-sm-2 controls">
     <input id="professionTitle" class="form-control" type="text" name="basic[professionTitle]" value="">
   </div>
@@ -136,18 +136,7 @@
 </div>
 
 <div class="form-group">
-  <label class="col-sm-2 control-label" for="recordPlace">档案存放地:</label>
-  <div class="col-sm-2 controls">
-    <input id="recordPlace" class="form-control" type="text" name="basic[recordPlace]" value="">
-  </div>
-  <label class="col-sm-2 control-label" for="formerLaborShip">与原工作的劳动关系:</label>
-  <div class="col-sm-3 controls">
-    <input id="formerLaborShip" class="form-control" type="text" name="basic[formerLaborShip]" value="">
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-sm-2 control-label">*&nbsp;入职时间:</label>
+  <label class="col-sm-2 control-label">入职时间:</label>
   <div class="col-sm-2 controls">
       <input type="text" id="joinTime" class="form-control time" name="basic[joinTime]" placeholder="日期格式：年-月-日"/>
   </div>
@@ -158,3 +147,14 @@
     </select>
   </div>
 </div>
+<div class="form-group">
+  <label class="col-sm-2 control-label" for="recordPlace">档案存放地:</label>
+  <div class="col-sm-2 controls">
+    <input id="recordPlace" class="form-control" type="text" name="basic[recordPlace]" value="">
+  </div>
+  {#<label class="col-sm-2 control-label" for="formerLaborShip">与原工作的劳动关系:</label>
+  <div class="col-sm-3 controls">
+    <input id="formerLaborShip" class="form-control" type="text" name="basic[formerLaborShip]" value="">
+  </div>#}
+</div>
+
