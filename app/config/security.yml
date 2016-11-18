@@ -6,7 +6,7 @@ security:
     providers:
         my_chain_provider:
             chain:
-                providers: [ app, my_ldap]
+                providers: [ my_ldap,app]
 
         app:
             id: app.user_provider
