@@ -109,13 +109,17 @@ class UserServiceImpl extends BaseService implements UserService
             $trueName = $user['trueName'];
             unset($user['trueName']);
         }
+        if (isset($user['email'])) {
+            $email = $user['email'];
+            unset($user['email']);
+        }
 
         $user = $this->getDao('user_dao')->create($user);
         $this->getDao('other_info_dao')->create(array('userId'=>$user['id']));
         if (isset($trueName)) {
             $this->getDao('user_basic_dao')->create(array('userId'=>$user['id'],'trueName'=>$trueName));
         } else {
-            $this->getDao('user_basic_dao')->create(array('userId'=>$user['id']));
+            $this->getDao('user_basic_dao')->create(array('userId'=>$user['id'], 'email'=>$email));
         }
         $this->getDao('family_member_dao')->create(array('userId'=>$user['id']));
         $this->getDao('work_experience_dao')->create(array('userId'=>$user['id']));

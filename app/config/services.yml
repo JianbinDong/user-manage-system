@@ -41,3 +41,20 @@ services:
          arguments:    ['@service_container']
          tags:
              - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority:255 }
+
+    ldap:
+        class: 'AppBundle\Security\LdapClient'
+        arguments:
+            - %ldap_host%  # host
+            - %ldap_port%         # port
+            - %ldap_version%           # version
+            - %ldap_SSL%       # SSL
+            - %ldap_TLS%        # TLS
+
+    security.authentication.provider.ldap_bind:
+        class: 'AppBundle\Security\LdapBindAuthenticationProvider'
+        arguments: ['', '', '', '', '', '%security.authentication.hide_user_not_found%', '@security.encoder_factory', '%base_dn%']
+
+    security.user.provider.ldap:
+        class: 'AppBundle\Security\LdapUserProvider'
+        arguments: ['', '', '', '', '', '', '', '@biz']

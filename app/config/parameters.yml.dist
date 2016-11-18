@@ -17,3 +17,14 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    base_dn: dc=ldapserver,dc=com
+    search_dn: "cn=admin,dc=ldapserver,dc=com"
+    search_password: root
+    default_roles: ROLE_USER
+
+    ldap_host: 127.0.0.1
+    ldap_port: 389
+    ldap_version: 3
+    ldap_SSL: false
+    ldap_TLS: false

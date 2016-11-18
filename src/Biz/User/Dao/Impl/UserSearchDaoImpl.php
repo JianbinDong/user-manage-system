@@ -29,7 +29,7 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
         }
         $mysql = rtrim($mysql,' AND ');
         
-        $sql = "SELECT * FROM user_basic INNER JOIN department ON user_basic.departmentId = department.id INNER JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
         return $this->db()->fetchAll($sql) ?: array();
     }
 
@@ -46,7 +46,7 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
         }
         $mysql = rtrim($mysql,' AND ');
 
-        $sql = "SELECT * FROM user_basic INNER JOIN department ON user_basic.departmentId = department.id INNER JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
         
         return $this->db()->fetchAll($sql) ?: array();
     }
@@ -71,7 +71,7 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
             }
         }
         $mysql = rtrim($mysql,' AND ');
-        $sql = "SELECT COUNT(*) FROM user_basic INNER JOIN department ON user_basic.departmentId = department.id INNER JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0";
+        $sql = "SELECT COUNT(*) FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0";
             $userCount = $this->db()->fetchAll($sql) ?: array();
             return $userCount[0]['COUNT(*)'];
     }
@@ -89,7 +89,7 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
         }
         $mysql = rtrim($mysql,' AND ');
 
-        $sql = "SELECT COUNT(*) FROM user_basic INNER JOIN department ON user_basic.departmentId = department.id INNER JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0";
+        $sql = "SELECT COUNT(*) FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0";
             $userCount = $this->db()->fetchAll($sql) ?: array();
             return $userCount[0]['COUNT(*)'];
     }

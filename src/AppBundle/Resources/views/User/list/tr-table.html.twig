@@ -2,7 +2,8 @@
 <tr id="js-status-{{ user.id }}">
   <td>{{ user.number }}</td>
   <td>{{ user.name }}</td>
-  <td>{{ user.trueName }}</td>
+  <td>{% if user.trueName %}{{ user.trueName }}{% else %}
+      {{ user.username }}{% endif %}</td>
   <td>{{ user.bornTime|date('Y-m-d') }}</td>
   <td>{{ user.joinTime|date('Y-m-d') }}</td>
   <td>
