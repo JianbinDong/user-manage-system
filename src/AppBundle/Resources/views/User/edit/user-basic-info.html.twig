@@ -129,7 +129,9 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="householdType">*&nbsp;户口性质:</label>
   <div class="col-sm-2 controls">
-    <input id="householdType" class="form-control" type="text" name="basic[householdType]" value="{{ basic.householdType }}">
+    <select class="form-control"  name="basic[householdType]">
+      {{ select_options(dict('householdType'), basic.householdType) }}
+    </select>
   </div>
   <label class="col-sm-2 control-label" for="residence">户口所在地:</label>
   <div class="col-sm-3 controls">
