@@ -150,3 +150,14 @@ word-wrap:break-word;
 .ibox-content {
     margin-bottom: 20px;
 }
+
+.father {
+    position: relative;
+}
+
+.star {
+    position: absolute;
+    right: -15px;
+    top: 0px;
+    color: red;
+}
