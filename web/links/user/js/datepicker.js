@@ -1,7 +1,7 @@
 $(function(){
     $('.time').datetimepicker({
        viewMode: 'years',
-       format: 'YYYY-MM-DD'
+       format: '20YY-MM-DD'
     });
 })
 
