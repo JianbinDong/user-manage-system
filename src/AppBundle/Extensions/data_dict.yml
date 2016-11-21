@@ -35,7 +35,7 @@ gender:
     male: 男
     female: 女
 
-householdType:
+rank:
     P1: P1
     P2: P2
     P3: P3
@@ -46,3 +46,19 @@ householdType:
     M1: M1
     M2: M2
     M3: M3
+
+householdType:
+    1: 农村户口
+    2: 城市户口
+
+professionTitle:
+    1: 无
+    2: 高级项目经理
+    3: 项目经理
+    4: 系统分析师
+    5: 软件架构师
+    6: 高级程序员
+    7: 程序员
+    8: 数据库认证工程师
+    9: 软件设计师
+    10: 高级经济师

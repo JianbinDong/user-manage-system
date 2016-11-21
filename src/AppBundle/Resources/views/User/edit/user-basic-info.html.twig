@@ -22,7 +22,7 @@
   <label class="col-sm-2 control-label" for="department">所属部门:</label>
   <div class="col-sm-2 controls" id="department">
     <div class="father">
-      <select class="form-control"  name="basic[departmentId]" {% if not app.user.isAdmin() and app.user.isLeader() %}disabled="disabled"{% endif %}
+      <select class="form-control"  name="basic[departmentId]" {% if not app.user.isAdmin() and basic.departmentId != '' and app.user.isLeader() %}disabled="disabled"{% endif %}
     >
         {{ select_options(departmentsChoices, basic.departmentId) }}
       </select>
@@ -33,7 +33,9 @@
   <div class="col-sm-3 controls">
     
     <div class="father">
-      <input id="rank" class="form-control" type="text" name="basic[rank]" value="{{ basic.rank }}" {% if not app.user.isAdmin() %}disabled="disabled"{% endif %}>
+      <select class="form-control"  name="basic[rank]" {% if not app.user.isAdmin() and basic.rank != '' %}disabled="disabled"{% endif %}>>
+        {{ select_options(dict('rank'), basic.rank) }}
+      </select>
       <span class="star">&nbsp;*</span>
     </div>
   </div>
@@ -190,7 +192,9 @@
   <div class="col-sm-2 controls">
     
     <div class="father">
-      <input id="professionTitle" class="form-control" type="text" name="basic[professionTitle]" value="{{ basic.professionTitle }}" {% if not app.user.isAdmin() %}disabled="disabled"{% endif %}>
+      <select class="form-control"  name="basic[professionTitle]" {% if not app.user.isAdmin() and basic.professionTitle != ''  %}disabled="disabled"{% endif %}>
+        {{ select_options(dict('professionTitle'), basic.professionTitle) }}
+      </select>
       <span class="star">&nbsp;*</span>
     </div>
   </div>
@@ -226,7 +230,7 @@
   <div class="col-sm-2 controls">
       
       <div class="father">
-        <input type="text" id="joinTime" class="form-control time" name="basic[joinTime]" placeholder="日期格式：年-月-日" value="{{ user.joinTime|date('Y/m/d') }}" {% if not app.user.isAdmin() %}disabled="disabled"{% endif %}/>
+        <input type="text" id="joinTime" class="form-control time" name="basic[joinTime]" placeholder="日期格式：年-月-日" value="{{ user.joinTime|date('Y/m/d') }}" {% if not app.user.isAdmin() and user.joinTime != 0 %}disabled="disabled"{% endif %}/>
         <span class="star">&nbsp;*</span>
       </div>
   </div>
