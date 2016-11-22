@@ -12,11 +12,11 @@ $('.delete-work-btn:eq(0)').addClass('hidden');
 
 $("#edit-user-form").on('click', '.add-family-info', function(){
     familyId++;
-    $('.family-modal #member').attr('name', 'family['+familyId+'][member]');
-    $('.family-modal #familyName').attr('name', 'family['+familyId+'][trueName]');
-    $('.family-modal #age').attr('name', 'family['+familyId+'][age]');
-    $('.family-modal #job').attr('name', 'family['+familyId+'][job]');
-    $('.family-modal #familyphone').attr('name', 'family['+familyId+'][phone]');
+    $('.family-modal .member').attr('name', 'family['+familyId+'][member]');
+    $('.family-modal .familyName').attr('name', 'family['+familyId+'][trueName]');
+    $('.family-modal .age').attr('name', 'family['+familyId+'][age]');
+    $('.family-modal .job').attr('name', 'family['+familyId+'][job]');
+    $('.family-modal .familyphone').attr('name', 'family['+familyId+'][phone]');
     $('.family').append($('.family-modal').html());
 });
 
@@ -29,11 +29,11 @@ learnId = learnId.split('[')[1].split(']')[0];
 
 $("#edit-user-form").on('click', '.add-learn-info', function(){
     learnId++;
-    $('.learn-modal #learnStartTime').attr('name', 'education['+learnId+'][startTime]');
-    $('.learn-modal #learnEndTime').attr('name', 'education['+learnId+'][endTime]');
-    $('.learn-modal #learnSchoolName').attr('name', 'education['+learnId+'][schoolName]');
-    $('.learn-modal #learnProfession').attr('name', 'education['+learnId+'][profession]');
-    $('.learn-modal #learnPosition').attr('name', 'education['+learnId+'][position]');
+    $('.learn-modal .learnStartTime').attr('name', 'education['+learnId+'][startTime]');
+    $('.learn-modal .learnEndTime').attr('name', 'education['+learnId+'][endTime]');
+    $('.learn-modal .learnSchoolName').attr('name', 'education['+learnId+'][schoolName]');
+    $('.learn-modal .learnProfession').attr('name', 'education['+learnId+'][profession]');
+    $('.learn-modal .learnPosition').attr('name', 'education['+learnId+'][position]');
     $('.learn').append($('.learn-modal').html());
     $('#edit-user-form').find('.time').datetimepicker({
        viewMode: 'years',
@@ -55,11 +55,11 @@ var workId = $(".time").last().attr("name");
 workId = workId.split('[')[1].split(']')[0];
 $("#edit-user-form").on('click', '.add-work-info', function(){
     workId++;
-    $('.work-modal #workStartTime').attr('name', 'work['+workId+'][startTime]');
-    $('.work-modal #workEndTime').attr('name', 'work['+workId+'][endTime]');
-    $('.work-modal #workUnit').attr('name', 'work['+workId+'][company]');
-    $('.work-modal #workPosition').attr('name', 'work['+workId+'][position]');
-    $('.work-modal #leaveReason').attr('name', 'work['+workId+'][leaveReason]');
+    $('.work-modal .workStartTime').attr('name', 'work['+workId+'][startTime]');
+    $('.work-modal .workEndTime').attr('name', 'work['+workId+'][endTime]');
+    $('.work-modal .workUnit').attr('name', 'work['+workId+'][company]');
+    $('.work-modal .workPosition').attr('name', 'work['+workId+'][position]');
+    $('.work-modal .leaveReason').attr('name', 'work['+workId+'][leaveReason]');
     $('.work').append($('.work-modal').html());
     $('#edit-user-form').find('.time').datetimepicker({
        viewMode: 'years',
@@ -97,10 +97,10 @@ $("#edit-user-form").validate({
         'basic[height]': "required",
         'basic[weight]': "required",
         'basic[postcode]': "required",
-        '#familyMember': "required",
-        '#familyName': "required",
-        '#age': "required",
-        '#familyphone': "required",
+        '.familyMember': "required",
+        '.familyName': "required",
+        '.age': "required",
+        '.familyphone': "required",
         'basic[prefession]': "required",
         'basic[prefession]': "required",
         'basic[department]': {
@@ -139,10 +139,10 @@ $("#edit-user-form").validate({
         'basic[prefession]': "请输入专业",
         'basic[trueName]': "请输入姓名",
         'basic[postcode]': "请输入毕业院校",
-        '#member': "请输入家庭成员",
-        '#familyName': "请输入家庭成员",
-        '#age': "请输入家庭成员",
-        '#familyphone': "请输入家庭成员",
+        '.member': "请输入家庭成员",
+        '.familyName': "请输入家庭成员",
+        '.age': "请输入家庭成员",
+        '.familyphone': "请输入家庭成员",
         'basic[department]': {
             required: "请输入所属部门"
         },
@@ -171,3 +171,6 @@ jQuery.validator.addMethod("mobile", function(value, element) {
 jQuery.validator.addMethod("checkNumber", function(value, element) { 
     return this.optional(element) || (/^\d{4}$/.test(value));    
 }, "请输入四位工号数");
+$().ready(function() {  
+ $("#edit-user-form").validate();  
+});

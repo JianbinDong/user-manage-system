@@ -7,27 +7,27 @@
       </div>
       <label class="col-sm-2 control-label" for="startTime">开始时间:</label>
       <div class="col-sm-2 controls">
-        <input class="form-control time" type="text" name="education[{{edu.id}}][startTime]" placeholder="日期格式：年-月-日" value="{{ edu.startTime|date('Y/m/d/')}}">
+        <input class="form-control time required" type="text" name="education[{{edu.id}}][startTime]" placeholder="日期格式：年-月-日" value="{{ edu.startTime|date('Y/m/d/')}}">
       </div>
       <label class="col-sm-2 control-label" for="endTime">结束时间:</label>
       <div class="col-sm-3 controls">
-        <input class="form-control time" type="text" name="education[{{edu.id}}][endTime]" placeholder="日期格式：年-月-日" value="{{ edu.endTime|date('Y/m/d')}}">
+        <input class="form-control time required" type="text" name="education[{{edu.id}}][endTime]" placeholder="日期格式：年-月-日" value="{{ edu.endTime|date('Y/m/d')}}">
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label" for="schoolName">院校名称:</label>
       <div class="col-sm-2 controls">
-        <input class="form-control" type="text" name="education[{{edu.id}}][schoolName]" value="{{ edu.schoolName }}">
+        <input class="form-control required" type="text" name="education[{{edu.id}}][schoolName]" value="{{ edu.schoolName }}">
       </div>
       <label class="col-sm-2 control-label" for="profession">所学专业:</label>
       <div class="col-sm-3 controls">
-        <input class="form-control" type="text" name="education[{{edu.id}}][profession]" value="{{ edu.profession }}">
+        <input class="form-control required" type="text" name="education[{{edu.id}}][profession]" value="{{ edu.profession }}">
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label" for="position">担任职务:</label>
       <div class="col-sm-2 controls">
-        <input id="learnPosition" class="form-control" type="text" name="education[{{edu.id}}][position]" value="{{ edu.position }}">
+        <input id="learnPosition" class="form-control required" type="text" name="education[{{edu.id}}][position]" value="{{ edu.position }}">
       </div>
     </div>
     <div class="form-group">
