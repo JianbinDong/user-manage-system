@@ -5,6 +5,9 @@
 {% block content_body %}
 
 {{ script(['links/user/js/edit-user.js']) }}
+{% include 'AppBundle:User:add/user-learn-info.html.twig' %}
+{% include 'AppBundle:User:add/user-family-info.html.twig' %}
+{% include 'AppBundle:User:add/user-work-info.html.twig' %}
 <form id="edit-user-form" class="form-horizontal" method="post" action="{% if app.user.isAdmin() %}{{ path('admin_user_edit',{id:user.id}) }}{% else %}{{ path('user_edit_person',{id:user.id}) }}{% endif %}">
   <div class="edit-user-body">
     <legend class="text-primary">基本信息</legend>
@@ -14,7 +17,7 @@
       家庭状况
     </legend>
     <div class="family">
-      {% include 'AppBundle:User:add/user-family-info.html.twig' %}
+      
       {% include 'AppBundle:User:edit/user-family-info.html.twig' %}
     </div>
 
@@ -22,7 +25,7 @@
       学习经历
     </legend>
     <div class="learn">
-      {% include 'AppBundle:User:add/user-learn-info.html.twig' %}
+      
       {% include 'AppBundle:User:edit/user-learn-info.html.twig' %}
     </div>
 
@@ -30,7 +33,7 @@
       工作履历
     </legend>
     <div class="work">
-      {% include 'AppBundle:User:add/user-work-info.html.twig' %}
+      
       {% include 'AppBundle:User:edit/user-work-info.html.twig' %}
     </div>
 

@@ -7,21 +7,38 @@
       </div>
       <label class="col-sm-2 control-label" for="member">称谓:</label>
       <div class="col-sm-2 controls">
-        <input class="form-control member required" id="familyMember" type="text" name="family[{{familyMember.id|default(0)}}][member]" value="{{ familyMember.member|default('') }}">
+        <div class="father">
+          <select class="form-control required member"  id="familyMember" name="family[{{familyMember.id|default(0)}}][member]">
+            {{ select_options(dict('member'), familyMember.member|default('')) }}
+          </select>
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
       <label class="col-sm-2 control-label" for="trueName">姓名:</label>
       <div class="col-sm-3 controls">
-        <input class="form-control familyName required" id="familyName" type="text" name="family[{{familyMember.id}}][trueName]" value="{{familyMember.trueName|default('') }}">
+        
+        <div class="father">
+          <input class="form-control familyName required" id="familyName" type="text" name="family[{{familyMember.id}}][trueName]" value="{{familyMember.trueName|default('') }}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-2 control-label" for="age">年龄:</label>
       <div class="col-sm-2 controls">
-        <input class="form-control age required" id="familyAge" type="text" name="family[{{familyMember.id}}][age]" value="{{familyMember.age|default(0) }}">
+        
+        <div class="father">
+          <input class="form-control age required" id="familyAge" type="text" name="family[{{familyMember.id}}][age]" value="{{familyMember.age|default() }}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
       <label class="col-sm-2 control-label" for="phone">联系电话:</label>
       <div class="col-sm-3 controls">
-        <input class="form-control familyphone required" id="familyphone" type="text" name="family[{{familyMember.id}}][phone]" value="{{familyMember.phone|default('') }}">
+        <div class="father">
+          <input class="form-control familyphone required" id="familyphone" type="text" name="family[{{familyMember.id}}][phone]" value="{{familyMember.phone|default('') }}">
+          <span class="star">&nbsp;*</span>
+        </div>
+
       </div>
       {#<label class="col-sm-2 control-label" for="job">工作单位及职务:</label>
       <div class="col-sm-3 controls">

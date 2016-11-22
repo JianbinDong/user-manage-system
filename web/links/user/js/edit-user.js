@@ -1,6 +1,6 @@
 var familyId = $(".member").last().attr("name");
 familyId = familyId.split('[')[1].split(']')[0];
-
+console.log(familyId)
 $('.family').find('#delete-family-info').removeClass('hidden');
 $('.learn').find('#delete-learn-info').removeClass('hidden');
 $('.work').find('#delete-work-info').removeClass('hidden');

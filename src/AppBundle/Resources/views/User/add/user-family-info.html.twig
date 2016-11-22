@@ -3,7 +3,10 @@
     <div class="form-group">
       <label class="col-sm-2 control-label" for="member">称谓:</label>
       <div class="col-sm-2 controls">
-        <input class="member form-control" type="text" name="family[1][member]" value="">
+        
+        <select class="form-control member" name="family[1][member]">
+          {{ select_options(dict('member'), '') }}
+        </select>
       </div>
       <label class="col-sm-2 control-label" for="trueName">姓名:</label>
       <div class="col-sm-3 controls">
