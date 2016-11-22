@@ -10,7 +10,7 @@
     {% if user.gender == 'male' %}男{% else %}女{% endif %}
   </td>
   {% if app.user.isAdmin() %}
-  <td>{{ user.professionTitle }}</td>
+  <td>{{ dict_text('professionTitle', user.professionTitle) }}</td>
   <td>{{ user.rank }}</td>
   {% endif %}
   <td>{{ dict_text('education', user.education) }}</td>
