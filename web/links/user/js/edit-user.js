@@ -45,6 +45,11 @@ $('#edit-user-form').on('click', '#delete-learn-info', function(){
     $(this).parent().parent().parent().remove();
 })
 
+$('#bornTime').datetimepicker({
+   viewMode: 'years',
+   format: 'YYYY-MM-DD'
+});
+
 
 var workId = $(".time").last().attr("name");
 workId = workId.split('[')[1].split(']')[0];
