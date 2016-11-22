@@ -157,16 +157,15 @@
       <span class="star">&nbsp;*</span>
     </div>
   </div>
-  <label class="col-sm-2 control-label" for="marriage">婚姻:</label>
+  <label class="col-sm-2 control-label" for="postcode">毕业院校:</label>
   <div class="col-sm-3 controls">
     
     <div class="father">
-      <select class="form-control"  name="basic[marriage]">
-        {{ select_options(dict('marriage'), basic.marriage) }}
-      </select>
+      <input id="postcode" class="form-control" type="text" name="basic[postcode]" value="{{ basic.postcode }}">
       <span class="star">&nbsp;*</span>
     </div>
   </div>
+  
 </div>
 
 <div class="form-group">
@@ -178,11 +177,14 @@
       <span class="star">&nbsp;*</span>
     </div>
   </div>
-  <label class="col-sm-2 control-label" for="postcode">邮编:</label>
+  <label class="col-sm-2 control-label" for="marriage">婚姻:</label>
   <div class="col-sm-3 controls">
     
     <div class="father">
-      <input id="postcode" class="form-control" type="text" name="basic[postcode]" value="{{ basic.postcode }}">
+      <select class="form-control"  name="basic[marriage]">
+        {{ select_options(dict('marriage'), basic.marriage) }}
+      </select>
+      <span class="star">&nbsp;*</span>
     </div>
   </div>
 </div>

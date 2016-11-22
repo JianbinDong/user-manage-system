@@ -91,7 +91,7 @@ $("#edit-user-form").validate({
         'basic[native]': "required",
         'basic[height]': "required",
         'basic[weight]': "required",
-
+        'basic[postcode]': "required",
         '#familyMember': "required",
         '#familyName': "required",
         '#age': "required",
@@ -133,6 +133,7 @@ $("#edit-user-form").validate({
         'basic[weight]': "请输入体重",
         'basic[prefession]': "请输入专业",
         'basic[trueName]': "请输入姓名",
+        'basic[postcode]': "请输入毕业院校",
         '#member': "请输入家庭成员",
         '#familyName': "请输入家庭成员",
         '#age': "请输入家庭成员",
