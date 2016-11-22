@@ -1,9 +1,9 @@
 var familyId = $(".member").last().attr("name");
 familyId = familyId.split('[')[1].split(']')[0];
-console.log(familyId)
-$('.family').find('#delete-family-info').removeClass('hidden');
-$('.learn').find('#delete-learn-info').removeClass('hidden');
-$('.work').find('#delete-work-info').removeClass('hidden');
+
+$('.family').find('.delete-family-info').removeClass('hidden');
+$('.learn').find('.delete-learn-info').removeClass('hidden');
+$('.work').find('.delete-work-info').removeClass('hidden');
 
 
 $('.delete-family-btn:eq(0)').addClass('hidden');
@@ -18,9 +18,11 @@ $("#edit-user-form").on('click', '.add-family-info', function(){
     $('.family-modal .job').attr('name', 'family['+familyId+'][job]');
     $('.family-modal .familyphone').attr('name', 'family['+familyId+'][phone]');
     $('.family').append($('.family-modal').html());
+    $('.family').find('.delete-family-info').removeClass('hidden');
+    $('.delete-family-btn:eq(0)').addClass('hidden');
 });
 
-$("#edit-user-form").on('click', '#delete-family-info', function(){
+$("#edit-user-form").on('click', '.delete-family-info', function(){
     $(this).parent().parent().parent().remove();
 })
 
@@ -39,9 +41,11 @@ $("#edit-user-form").on('click', '.add-learn-info', function(){
        viewMode: 'years',
        format: 'YYYY-MM-DD'
     });
+    $('.learn').find('.delete-learn-info').removeClass('hidden');
+    $('.delete-learn-btn:eq(0)').addClass('hidden');
 });
 
-$('#edit-user-form').on('click', '#delete-learn-info', function(){
+$('#edit-user-form').on('click', '.delete-learn-info', function(){
     $(this).parent().parent().parent().remove();
 })
 
@@ -65,9 +69,11 @@ $("#edit-user-form").on('click', '.add-work-info', function(){
        viewMode: 'years',
        format: 'YYYY-MM-DD'
     });
+    $('.work').find('.delete-work-info').removeClass('hidden');
+    $('.delete-work-btn:eq(0)').addClass('hidden');
 });
 
-$('#edit-user-form').on('click', '#delete-work-info', function(){
+$('#edit-user-form').on('click', '.delete-work-info', function(){
     $(this).parent().parent().parent().remove();
 });
 
