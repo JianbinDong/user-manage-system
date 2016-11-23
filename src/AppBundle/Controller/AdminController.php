@@ -38,7 +38,7 @@ class AdminController extends UserBaseController
 
             $this->getUserService()->updateAll($id, $fields);
 
-            return $this->redirect($this->generateUrl('admin_user_present_list'));
+            return $this->redirect($this->generateUrl('user_roster',array('userId'=>$id)));
         }
 
         $user = $this->getUserService()->getCompleteinfo($id);

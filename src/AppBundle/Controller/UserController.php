@@ -58,7 +58,9 @@ class UserController extends UserBaseController
         if ($request->getMethod() == 'POST') {
             $fields = $request->request->all();
 
-            $this->getUserService()->updateAll($id, $fields);        
+            $this->getUserService()->updateAll($id, $fields);  
+
+            return $this->redirect($this->generateUrl('user_roster',array('userId'=>$id)));      
         }
 
         $user = $this->getUserService()->getCompleteinfo($id);
@@ -112,6 +114,8 @@ class UserController extends UserBaseController
                 $roster = $this->getUserService()->updateRoster($userId, $fields);
             }
             $roster = $this->getUserService()->getRoster($userId);
+
+            return $this->redirect($this->generateUrl('user_upload',array('id'=>$userId, 'type'=>'FrontIDcard')));
         }
 
         return $this->render('AppBundle:User:avatar.html.twig', array(
