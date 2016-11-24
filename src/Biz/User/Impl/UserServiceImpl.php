@@ -112,8 +112,8 @@ class UserServiceImpl extends BaseService implements UserService
         $email = '';
         if (isset($user['email'])) {
             $email = $user['email'];
-            unset($user['email']);
         }
+        unset($user['email']);
 
         $user = $this->getDao('user_dao')->create($user);
         $this->getDao('other_info_dao')->create(array('userId'=>$user['id']));
