@@ -54,7 +54,7 @@ class LdapUserProvider implements UserProviderInterface
         $ldapUser = $search[0];
 
         $user = $this->getUserService()->getUserByUsername($username);
-        if (empty($user) && empty($ldapUser)) {
+        if (empty($user)) {
             $password = $this->generateRandomChars();
             $user = array(
                 'email' => $ldapUser['mail'][0],
@@ -68,9 +68,7 @@ class LdapUserProvider implements UserProviderInterface
         }
 
         $basic = $this->biz['user_service']->getBasic($user['id']);
-        if ($basic['departmentId'] == 0) {
-            $user['departmentId'] = 1;
-        }
+
         $department = $this->biz['department_service']->getDepartment($basic['departmentId']);
         $user['trueName'] = $basic['trueName'];
         $user['department'] = $department['name'];
