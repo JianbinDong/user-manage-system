@@ -55,7 +55,7 @@
   <div class="col-sm-3 controls">
     
     <div class="father">
-      <input id="email" class="form-control" type="text" name="basic[email]" value="{{ basic.email }}">
+      <input id="email" class="form-control" {% if basic.email != '' %}disabled=disabled{% endif %} type="text" name="basic[email]" value="{{ basic.email }}">
       <span class="star">&nbsp;*</span>
     </div>
   </div>
