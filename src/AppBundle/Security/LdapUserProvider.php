@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\User;
 use Biz\BizKernel;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use AppBundle\Security\CurrentUser;
 
 class LdapUserProvider implements UserProviderInterface
@@ -54,7 +55,11 @@ class LdapUserProvider implements UserProviderInterface
         $ldapUser = $search[0];
 
         $user = $this->getUserService()->getUserByUsername($username);
+            
         if (empty($user)) {
+            if (empty($ldapUser['mail']) || empty($ldapUser['initials'])) {
+                throw new BadCredentialsException('ldap信息错误，请联系王建平.');
+            }
             $password = $this->generateRandomChars();
             $user = array(
                 'email' => $ldapUser['mail'][0],
