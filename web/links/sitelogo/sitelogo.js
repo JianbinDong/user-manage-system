@@ -296,8 +296,8 @@
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
       this.stopCropper();
-      // this.$avatarModal.modal('hide');
-      location.reload();
+      this.$avatarModal.modal('hide');
+      // location.reload();
     },
 
     alert: function (msg) {

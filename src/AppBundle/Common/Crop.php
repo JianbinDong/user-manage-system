@@ -59,7 +59,7 @@ class Crop
                 if (!$fileSystem->exists(__DIR__.'/../../../web/upload/'.$this->userId.'/')) {
                     $fileSystem->mkdir(__DIR__.'/../../../web/upload/'.$this->userId.'/');
                 }
-                $src = 'upload/'.$this->userId.'/avatar'.'.original'.$extension;
+                $src = 'upload/'.$this->userId.'/avatar'.time().'.original'.$extension;
 
                 if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 
@@ -90,7 +90,7 @@ class Crop
 
     private function setDst()
     {
-        $this -> dst = 'upload/'.$this->userId.'/avatar'.'.png';
+        $this -> dst = 'upload/'.$this->userId.'/avatar'.time().'.png';
     }
 
     private function crop($src, $dst, $data)
