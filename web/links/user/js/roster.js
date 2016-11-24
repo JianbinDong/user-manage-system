@@ -34,3 +34,8 @@ $('#roster-form').validate({
     }
 
 });
+
+$('#bornTime').datetimepicker({
+   viewMode: 'years',
+   format: 'YYYY-MM-DD'
+});
