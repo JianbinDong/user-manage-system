@@ -51,12 +51,12 @@ class AuthController extends BaseController
 
     public function logoutAction(Request $request)
     {
-
+        return true;
     }
 
     public function checkAction(Request $request)
     {
-
+        return true;
     }
     
     protected function getUserService()
