@@ -131,7 +131,7 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function updateAll($id, $fields)
     {
-        $this->editValidate($id, $fields);
+        // $this->editValidate($id, $fields);
         $this->getDao('family_member_dao')->deleteByUserId($id);
         $this->getDao('edu_experience_dao')->deleteByUserId($id);
         $this->getDao('work_experience_dao')->deleteByUserId($id);
