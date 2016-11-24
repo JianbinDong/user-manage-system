@@ -17,10 +17,10 @@ class AuthController extends BaseController
         }
         
         if (count(array_intersect($currentUser['roles'], array('ROLE_ADMIN'))) > 0) {
-            return $this->forward('AppBundle:Admin:listPresent');
+            return $this->redirect($this->generateUrl('admin_user_present_list'));
         }
 
-        return $this->forward('AppBundle:User:listPresent');
+        return $this->redirect($this->generateUrl('user_present_list'));
     }
 
     public function registerAction(Request $request)
