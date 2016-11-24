@@ -8,7 +8,6 @@ login:
 
 login_check:
     path: /login_check
-    defaults: { _controller: AppBundle:Auth:check }
 
 logout:
     path: /logout
