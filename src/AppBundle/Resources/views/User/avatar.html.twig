@@ -5,6 +5,7 @@
 {% block content_title %}
 {{ script(['links/cropper/cropper.min.js']) }}
 {{ script(['links/sitelogo/sitelogo.js']) }}
+{{ script(['links/user/js/roster.js']) }}
 <h1>花名册</h1>
 {% endblock %}
 
@@ -30,44 +31,62 @@
       <label for="trueName" class="col-sm-3 control-label">姓名：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="trueName" name="trueName" placeholder="姓名" value="{{roster.trueName}}">
+        <div class="father">
+          <input type="text" class="form-control" id="trueName" name="trueName" placeholder="姓名" value="{{roster.trueName}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="gender" class="col-sm-3 control-label">性别：</label>
 
       <div class="col-sm-5">
+        <div class="father">
           <select class="form-control"  name="gender">
             {{ select_options(dict('gender'), roster.gender) }}
           </select>
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="number" class="col-sm-3 control-label">工号：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="number" name="number" placeholder="工号" disabled="disabled" value="{{roster.number}}">
+        <div class="father">
+          <input type="text" class="form-control" id="number" name="number" placeholder="工号" disabled="disabled" value="{{roster.number}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="native" style="resize:vertical" class="col-sm-3 control-label">籍贯：</label>
 
       <div class="col-sm-5">
-        <textarea class="form-control" id="native" name="native" placeholder="籍贯">{{roster.native}}</textarea>
+        <div class="father">
+          <textarea class="form-control" id="native" name="native" style="resize:vertical" placeholder="籍贯">{{roster.native}}</textarea>
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="phone" class="col-sm-3 control-label">手机：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="手机" value="{{roster.phone}}">
+        <div class="father">
+          <input type="text" class="form-control" id="phone" name="phone" placeholder="手机" value="{{roster.phone}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="bornTime" class="col-sm-3 control-label">生日：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="bornTime" name="bornTime" placeholder="生日" value="{{roster.bornTime|date('m-d')}}">
+        <div class="father">
+          <input type="text" class="form-control" id="bornTime" name="bornTime" placeholder="生日" value="{{roster.bornTime|date('m-d')}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -75,28 +94,40 @@
       <label for="QQ" class="col-sm-3 control-label">QQ：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="QQ" name="QQ" placeholder="QQ" value="{{roster.QQ|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="QQ" name="QQ" placeholder="QQ" value="{{roster.QQ|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="constellation" class="col-sm-3 control-label">星座：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="constellation" name="constellation" placeholder="星座" value="{{roster.constellation|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="constellation" name="constellation" placeholder="星座" value="{{roster.constellation|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="hobby" class="col-sm-3 control-label">爱好：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="hobby" name="hobby" placeholder="爱好" value="{{roster.hobby|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="hobby" name="hobby" placeholder="爱好" value="{{roster.hobby|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="favoriteMusic" class="col-sm-3 control-label">喜欢的音乐：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="favoriteMusic" name="favoriteMusic" placeholder="喜欢的音乐" value="{{roster.favoriteMusic|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="favoriteMusic" name="favoriteMusic" placeholder="喜欢的音乐" value="{{roster.favoriteMusic|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -104,7 +135,10 @@
       <label for="favoriteMovie" class="col-sm-3 control-label">喜欢的电影：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="favoriteMovie" name="favoriteMovie" placeholder="喜欢的电影" value="{{roster.favoriteMovie|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="favoriteMovie" name="favoriteMovie" placeholder="喜欢的电影" value="{{roster.favoriteMovie|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -112,7 +146,10 @@
       <label for="favoriteSport" class="col-sm-3 control-label">喜欢的运动：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="favoriteSport" name="favoriteSport" placeholder="喜欢的运动" value="{{roster.favoriteSport|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="favoriteSport" name="favoriteSport" placeholder="喜欢的运动" value="{{roster.favoriteSport|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -120,7 +157,10 @@
       <label for="favoriteFood" class="col-sm-3 control-label">喜欢的食物：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="favoriteFood" name="favoriteFood" placeholder="喜欢的食物" value="{{roster.favoriteFood|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="favoriteFood" name="favoriteFood" placeholder="喜欢的食物" value="{{roster.favoriteFood|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -128,7 +168,10 @@
       <label for="favoritePlace" class="col-sm-3 control-label">喜欢的地方：</label>
 
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="favoritePlace" name="favoritePlace" placeholder="喜欢的地方" value="{{roster.favoritePlace|default()}}">
+        <div class="father">
+          <input type="text" class="form-control" id="favoritePlace" name="favoritePlace" placeholder="喜欢的地方" value="{{roster.favoritePlace|default()}}">
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
 
@@ -136,7 +179,10 @@
       <label for="dream" class="col-sm-3 control-label">梦想：</label>
 
       <div class="col-sm-5">
-        <textarea class="form-control" style="resize:vertical" id="dream" name="dream" placeholder="梦想">{{roster.dream|default()}}</textarea>
+        <div class="father">
+          <textarea class="form-control" style="resize:vertical" id="dream" name="dream" placeholder="梦想">{{roster.dream|default()}}</textarea>
+          <span class="star">&nbsp;*</span>
+        </div>
       </div>
     </div>
     {{ form_csrf_token() }}
