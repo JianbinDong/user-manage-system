@@ -51,12 +51,12 @@ class AuthController extends BaseController
 
     public function logoutAction(Request $request)
     {
-        return true;
+        return $this->redirect($this->generateUrl('homepage'));
     }
 
     public function checkAction(Request $request)
     {
-        return true;
+        return $this->redirect($this->generateUrl('homepage'));
     }
     
     protected function getUserService()
