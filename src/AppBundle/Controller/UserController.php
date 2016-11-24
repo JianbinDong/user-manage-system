@@ -41,7 +41,7 @@ class UserController extends UserBaseController
         $workInfos = $this->getUserService()->findWorkExperiences($basic['id']);
         $otherInfo = $this->getUserService()->getOtherInfoByUserId($basic['id']);
         $roster = $this->getUserService()->getRoster($id);
-// var_dump($roster);exit();
+
         return $this->render('AppBundle:User:show/show-user-info.html.twig', array(
             'basic' => $basic,
             'familyMembers' => $familyMembers,
@@ -55,6 +55,8 @@ class UserController extends UserBaseController
 
     public function editPersonAction(Request $request, $id)
     {
+        $currentUser = $this->getUser();
+        $id = $currentUser['id'];
         if ($request->getMethod() == 'POST') {
             $fields = $request->request->all();
 
@@ -104,6 +106,8 @@ class UserController extends UserBaseController
 
     public function rosterAction(Request $request, $userId)
     {
+        $currentUser = $this->getUser();
+        $userId = $currentUser['id'];
         $roster = $this->getUserService()->getRoster($userId);
         if ($request->getMethod() == 'POST') {
             $fields = $request->request->all();
@@ -125,6 +129,8 @@ class UserController extends UserBaseController
 
     public function uploadImagesAction(Request $request, $id, $type)
     {
+        $currentUser = $this->getUser();
+        $userId = $currentUser['id'];
         if ($request->getMethod() == 'POST') {
             $image = $request->files->get('image');
             $path = $this->getUserService()->uploadImage($id, $image, $type);
