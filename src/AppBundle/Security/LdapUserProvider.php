@@ -68,7 +68,11 @@ class LdapUserProvider implements UserProviderInterface
         }
 
         $basic = $this->biz['user_service']->getBasic($user['id']);
-        $user['departmentId'] = $basic['departmentId'];
+        if (empty($basic['departmentId'])) {
+            $user['departmentId'] = 0;
+        } else {
+            $user['departmentId'] = $basic['departmentId'];
+        }
         $department = $this->biz['department_service']->getDepartment($basic['departmentId']);
         $user['trueName'] = $basic['trueName'];
         $user['department'] = $department['name'];
