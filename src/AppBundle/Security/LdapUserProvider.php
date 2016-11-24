@@ -54,7 +54,7 @@ class LdapUserProvider implements UserProviderInterface
         $ldapUser = $search[0];
 
         $user = $this->getUserService()->getUserByUsername($username);
-        if (empty($user)) {
+        if (empty($user) && empty($ldapUser)) {
             $password = $this->generateRandomChars();
             $user = array(
                 'email' => $ldapUser['mail'][0],
