@@ -109,6 +109,7 @@ class UserServiceImpl extends BaseService implements UserService
             $trueName = $user['trueName'];
             unset($user['trueName']);
         }
+        $email = '';
         if (isset($user['email'])) {
             $email = $user['email'];
             unset($user['email']);
