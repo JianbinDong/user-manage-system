@@ -265,6 +265,9 @@ class UserServiceImpl extends BaseService implements UserService
         $basic = $this->getDao('user_basic_dao')->getByUserId($userId);
         $tableFields = $this->getDao('user_basic_dao')->getTableFields();
         $basicFields = ArrayToolkit::parts($fields, $tableFields);
+        if (isset($basicFields['bornTime'])) {
+            $basicFields['bornTime'] = strtotime($basicFields['bornTime']);
+        }
         $this->getDao('user_basic_dao')->update($basic['id'], $basicFields);
 
         $roster = $this->getDao('roster_dao')->getByUserId($userId);
