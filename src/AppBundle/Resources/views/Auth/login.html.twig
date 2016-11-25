@@ -12,7 +12,11 @@
 <body>
 {% if error %}
 <div class="alert alert-error">
+  {% if error.message == 'Bad credentials.' %}
+  账号或密码错误
+  {% else %}
   {{ error.message }}
+  {% endif %}
 </div>
 {% endif %}
 <div class="header">
