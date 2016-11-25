@@ -2,7 +2,7 @@
 
 namespace Biz\User\Impl;
 
-use Codeages\Biz\Framework\Service\BaseService;
+use Biz\Common\BaseService;
 use Biz\User\UserService;
 use AppBundle\Common\ArrayToolkit;
 use AppBundle\Common\Upload;
@@ -131,7 +131,14 @@ class UserServiceImpl extends BaseService implements UserService
 
     public function updateAll($id, $fields)
     {
-        // $this->editValidate($id, $fields);
+        $currentUser = $this->getCurrentUser();
+
+        if (!$this->isAdmin($currentUser['id'])) {
+            unset($fields['basic']['number']);
+            unset($fields['basic']['email']);
+            unset($fields['basic']['rank']);
+        }
+
         $this->getDao('family_member_dao')->deleteByUserId($id);
         $this->getDao('edu_experience_dao')->deleteByUserId($id);
         $this->getDao('work_experience_dao')->deleteByUserId($id);
