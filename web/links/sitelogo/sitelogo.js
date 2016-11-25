@@ -277,7 +277,7 @@
           }
           this.$avatarInput.val('');
         } else if (data.message) {
-          this.alert(data.message);
+          alert(data.message);
         }
       } else {
         this.alert('Failed to response');

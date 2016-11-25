@@ -87,7 +87,9 @@ class UserController extends UserBaseController
     {
         if ($request->getMethod() == 'POST') {
             $crop = new Crop($id, $_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file']);
-
+            if (empty($crop -> getResult())) {
+                return new JsonResponse(array('message'=>'请上传2M以下照片'));
+            }
             $response = array (
                 'state'  => 200,
                 'message' => $crop -> getMsg(),
