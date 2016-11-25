@@ -137,6 +137,8 @@ class UserServiceImpl extends BaseService implements UserService
             unset($fields['basic']['number']);
             unset($fields['basic']['email']);
             unset($fields['basic']['rank']);
+            unset($fields['basic']['joinTime']);
+            unset($fields['basic']['professionTitle']);
         }
 
         $this->getDao('family_member_dao')->deleteByUserId($id);
