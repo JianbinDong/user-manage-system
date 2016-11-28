@@ -49,7 +49,7 @@ class UserController extends UserBaseController
             'workInfos' => $workInfos,
             'otherInfo' => $otherInfo,
             'roster' => $roster,
-            'tab' => 'basic',
+            'tab' => 'roster',
         ));
     }
 
