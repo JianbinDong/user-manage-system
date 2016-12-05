@@ -132,7 +132,7 @@ class UserController extends UserBaseController
     public function uploadImagesAction(Request $request, $id, $type)
     {
         $currentUser = $this->getUser();
-        $userId = $currentUser['id'];
+        $id = $currentUser['id'];
         if ($request->getMethod() == 'POST') {
             $image = $request->files->get('image');
             $path = $this->getUserService()->uploadImage($id, $image, $type);
