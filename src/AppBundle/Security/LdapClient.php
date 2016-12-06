@@ -5,6 +5,7 @@ namespace AppBundle\Security;
 use Symfony\Component\Ldap\Exception\ConnectionException;
 use Symfony\Component\Ldap\Exception\LdapException;
 use Symfony\Component\Ldap\LdapClientInterface;
+use AppBundle\Common\ArrayToolkit;
 
 class LdapClient implements LdapClientInterface
 {
@@ -51,7 +52,6 @@ class LdapClient implements LdapClientInterface
         if (!$this->connection) {
             $this->connect();
         }
-        
         if (!is_array($filter)) {
             $filter = array($filter);
         }
@@ -71,7 +71,6 @@ class LdapClient implements LdapClientInterface
         if (0 === $infos['count']) {
             return;
         }
-
         return $infos;
     }
 
@@ -90,6 +89,51 @@ class LdapClient implements LdapClientInterface
         }
 
         return $value;
+    }
+
+    public function updateUser($baseDn, $query, $fields)
+    {
+        $search = $this->find($baseDn, $query);
+        if ($search['count'] != 1) {
+
+        } else {
+            $user = $search[0];
+            $keys = array_keys($user);
+            foreach ($keys as $index => $key) {
+                if (is_numeric($key)) {
+                    unset($keys[$index]);
+                }
+            }
+
+            $updateFields = ArrayToolkit::parts($fields, $keys);
+            $this->updateAttrs($baseDn, $query, $updateFields);
+            
+            $createFields = array_diff($fields, $updateFields);
+            $this->addAttrs($baseDn, $query, $createFields);
+        }
+    }
+
+    public function updateAttrs($baseDn, $query, $fields)
+    {
+        $search = $this->find($baseDn, $query);
+        if ($search['count'] != 1) {
+
+        } else {
+            $user = $search[0];
+            var_dump(array_keys($user));exit();
+            ldap_modify($this->connection, $user['dn'], $fields);
+        }
+    }
+
+    public function addAttrs($baseDn, $query, $fields)
+    {
+        $search = $this->find($baseDn, $query);
+        if ($search['count'] != 1) {
+
+        } else {
+            $user = $search[0];
+            ldap_mod_add($this->connection, $user['dn'], $fields);
+        }
     }
 
     private function connect()
