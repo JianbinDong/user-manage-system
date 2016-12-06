@@ -33,12 +33,16 @@ class AdminController extends UserBaseController
 
     public function editUserAction(Request $request, $id)
     {
+        $currentUser = $this->getUser();
         if ($request->getMethod() == 'POST') {
             $fields = $request->request->all();
 
             $this->getUserService()->updateAll($id, $fields);
-
-            return $this->redirect($this->generateUrl('user_roster',array('userId'=>$id)));
+            if ($currentUser['id'] == $id) {
+                return $this->redirect($this->generateUrl('user_roster',array('userId'=>$id)));
+            } else {
+                return $this->redirect($this->generateUrl('admin_user_present_list'));
+            }
         }
 
         $user = $this->getUserService()->getCompleteinfo($id);
