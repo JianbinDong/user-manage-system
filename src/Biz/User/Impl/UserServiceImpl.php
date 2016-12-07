@@ -6,6 +6,7 @@ use Biz\Common\BaseService;
 use Biz\User\UserService;
 use AppBundle\Common\ArrayToolkit;
 use AppBundle\Common\Upload;
+use AppBundle\Common\LdapProcesser;
 
 class UserServiceImpl extends BaseService implements UserService
 {
@@ -77,6 +78,8 @@ class UserServiceImpl extends BaseService implements UserService
             $this->getDao('work_experience_dao')->create($work);
         }
 
+        $process = new LdapProcesser($this->biz);
+        $process->updateUserLdapInfo($user['id']);
         return array_merge($affectedBasic, $lastInsertUser);
     }
 
@@ -125,7 +128,8 @@ class UserServiceImpl extends BaseService implements UserService
         $this->getDao('family_member_dao')->create(array('userId'=>$user['id']));
         $this->getDao('work_experience_dao')->create(array('userId'=>$user['id']));
         $this->getDao('edu_experience_dao')->create(array('userId'=>$user['id']));
-
+        $process = new LdapProcesser($this->biz);
+        $process->updateUserLdapInfo($user['id']);
         return $user;
     }
 
@@ -180,6 +184,8 @@ class UserServiceImpl extends BaseService implements UserService
         $other = ArrayToolkit::parts($fields['other'], $otherTableFields);
 
         $this->getDao('other_info_dao')->update($other['id'], $other);
+        $process = new LdapProcesser($this->biz);
+        $process->updateUserLdapInfo($user['id']);
 
         return $user;
     }

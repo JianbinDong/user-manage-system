@@ -89,3 +89,7 @@ admin_verify_number:
 admin_pass_number:
     path: /admin/user/{userId}/number/pass
     defaults: { _controller: AppBundle:Admin:passNumber }
+
+admin_update_ldap:
+    path: /admin/user/update/ldap/info
+    defaults: { _controller:AppBundle:Admin:updateLdap }

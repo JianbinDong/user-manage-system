@@ -16,6 +16,7 @@ class LdapClient implements LdapClientInterface
     private $useStartTls;
     private $optReferrals;
     private $connection;
+    
 
     public function __construct($host = null, $port = 389, $version = 3, $useSsl = false, $useStartTls = false, $optReferrals = false)
     {
@@ -29,6 +30,7 @@ class LdapClient implements LdapClientInterface
         $this->useSsl = (bool) $useSsl;
         $this->useStartTls = (bool) $useStartTls;
         $this->optReferrals = (bool) $optReferrals;
+
     }
 
     public function __destruct()
@@ -93,6 +95,9 @@ class LdapClient implements LdapClientInterface
 
     public function updateUser($baseDn, $query, $fields)
     {
+        if (!$this->connection) {
+            $this->connect();
+        }
         $search = $this->find($baseDn, $query);
         if ($search['count'] != 1) {
 
@@ -115,18 +120,23 @@ class LdapClient implements LdapClientInterface
 
     public function updateAttrs($baseDn, $query, $fields)
     {
+        if (!$this->connection) {
+            $this->connect();
+        }
         $search = $this->find($baseDn, $query);
         if ($search['count'] != 1) {
 
         } else {
             $user = $search[0];
-            var_dump(array_keys($user));exit();
             ldap_modify($this->connection, $user['dn'], $fields);
         }
     }
 
     public function addAttrs($baseDn, $query, $fields)
     {
+        if (!$this->connection) {
+            $this->connect();
+        }
         $search = $this->find($baseDn, $query);
         if ($search['count'] != 1) {
 

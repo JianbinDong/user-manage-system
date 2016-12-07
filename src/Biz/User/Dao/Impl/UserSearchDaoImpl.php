@@ -32,9 +32,9 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
                 $params[] = $value;
             }
         }
-        $mysql = rtrim($mysql,' AND ');
+        // $mysql = rtrim($mysql,' AND ');
         
-        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql}  number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
         return $this->db()->fetchAll($sql, $params) ?: array();
     }
 
@@ -51,9 +51,9 @@ class UserSearchDaoImpl extends GeneralDaoImpl implements UserSearchDao
                 $params[] = $value;
             }
         }
-        $mysql = rtrim($mysql,' AND ');
+        // $mysql = rtrim($mysql,' AND ');
 
-        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql} AND number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM user_basic LEFT JOIN department ON user_basic.departmentId = department.id LEFT JOIN user ON user.id = user_basic.userId WHERE {$mysql}  number > 0 ORDER BY {$orderBy[0]} {$orderBy[1]} LIMIT {$start},{$limit}";
         
         return $this->db()->fetchAll($sql, $params) ?: array();
     }

@@ -12,10 +12,11 @@ use AppBundle\Common\Crop;
 use AppBundle\Common\Paginator;
 use AppBundle\Controller\UserBaseController;
 
+
 class UserController extends UserBaseController
 {
     public function listPresentAction(Request $request)
-    {
+    {   
         $conditions = $request->query->all();
         $conditions['status'] = 'on';
 

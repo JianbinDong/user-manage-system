@@ -9,6 +9,8 @@ use AppBundle\Common\ArrayToolkit;
 use AppBundle\Common\Import;
 use AppBundle\Common\Paginator;
 use AppBundle\Controller\UserBaseController;
+use AppBundle\Common\LdapProcesser;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AdminController extends UserBaseController
 {
@@ -245,6 +247,18 @@ class AdminController extends UserBaseController
         return $this->render('AppBundle:User:verify-number.html.twig', array(
             'verifies' => $verifies
         ));
+    }
+
+    public function updateLdapAction(Request $request)
+    {
+        $user = $this->getUser();
+        if ($user['username'] == 'admin' && $user['number'] == '0000') {
+            $process = new LdapProcesser($this->biz);
+            $process->updateUserLdapInfo($user['id']);
+            return new JsonResponse('update ldap success');
+        }
+
+        throw AccessDeniedHttpException('!!!');
     }
 
     protected function sendPasswordEmail($to)

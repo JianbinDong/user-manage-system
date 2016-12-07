@@ -39,6 +39,16 @@ class BizKernel extends Kernel
         return [];
     }
 
+    public function getParameter($name)
+    {
+        return $this->extraContainer->getParameter($name);
+    }
+
+    public function hasParameter($name)
+    {
+        return $this->extraContainer->has($name);
+    }
+
     protected function registerService()
     {
         $this['user_dao'] = $this->dao(function($container) {
