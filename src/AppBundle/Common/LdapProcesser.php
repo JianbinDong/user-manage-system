@@ -28,7 +28,7 @@ class LdapProcesser
         $this->ldap = new LdapClient($host);
         $this->defaultRoles = $this->biz->getParameter('default_roles');
         $this->defaultSearch = str_replace('{uid_key}', $uidKey, $filter);
-        $this->completeAttrs = array('mail');
+        $this->completeAttrs = array('mail', 'mobile');
     }
 
     public function updateAllUserLdapInfo()
@@ -72,9 +72,9 @@ class LdapProcesser
         $infoKeys = $this->infoKeys;
         $datas = ArrayToolkit::parts($user, $infoKeys);
         $map = array(
-            'email' => 'mail'
+            'email' => 'mail',
+            'phone' => 'mobile'
         );
-
         $datas = ArrayToolkit::rename($datas, $map);
         return ArrayToolkit::parts($datas, $this->completeAttrs);
     }
