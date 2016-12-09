@@ -109,7 +109,6 @@ class LdapClient implements LdapClientInterface
                     unset($keys[$index]);
                 }
             }
-
             $updateFields = ArrayToolkit::parts($fields, $keys);
             $this->updateAttrs($baseDn, $query, $updateFields);
             
@@ -142,7 +141,9 @@ class LdapClient implements LdapClientInterface
 
         } else {
             $user = $search[0];
-            ldap_mod_add($this->connection, $user['dn'], $fields);
+            foreach ($fields as $key => $field) {
+                ldap_mod_add($this->connection, $user['dn'], array($key=>$field));
+            }
         }
     }
 

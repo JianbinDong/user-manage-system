@@ -23,8 +23,11 @@ class ArrayToolkit
 
     public static function parts(array $array, array $keys)
     {
+        foreach ($keys as $index => $key) {
+            $keys[$index] = strtolower($key);
+        }
         foreach (array_keys($array) as $key) {
-            if (!in_array($key, $keys)) {
+            if (!in_array(strtolower($key), $keys)) {
                 unset($array[$key]);
             }
         }

@@ -254,7 +254,7 @@ class AdminController extends UserBaseController
         $user = $this->getUser();
         if ($user['username'] == 'admin' && $user['number'] == '0000') {
             $process = new LdapProcesser($this->biz);
-            $process->updateUserLdapInfo($user['id']);
+            $process->updateAllUserLdapInfo($user['id']);
             return new JsonResponse('update ldap success');
         }
 

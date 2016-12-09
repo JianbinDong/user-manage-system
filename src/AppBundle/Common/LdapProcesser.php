@@ -16,7 +16,7 @@ class LdapProcesser
     private $defaultSearch;
     private $biz;
     private $completeAttrs;
-    private $infoKeys = array('rank', 'trueName', 'phone', 'email', 'gender');
+    private $infoKeys = array('rank', 'trueName', 'phone', 'gender');
 
     public function __construct($biz, $uidKey = 'uid', $filter = '({uid_key}={username})')
     {
@@ -28,7 +28,7 @@ class LdapProcesser
         $this->ldap = new LdapClient($host);
         $this->defaultRoles = $this->biz->getParameter('default_roles');
         $this->defaultSearch = str_replace('{uid_key}', $uidKey, $filter);
-        $this->completeAttrs = array('mail', 'mobile');
+        $this->completeAttrs = array('gecos', 'mobile', 'title', 'displayName');
     }
 
     public function updateAllUserLdapInfo()
@@ -37,7 +37,7 @@ class LdapProcesser
             array(),
             array('number', 'ASC'),
             0,
-            10
+            200
         );
         
         $this->ldap->bind($this->searchDn, $this->searchPassword);
@@ -71,9 +71,16 @@ class LdapProcesser
     {
         $infoKeys = $this->infoKeys;
         $datas = ArrayToolkit::parts($user, $infoKeys);
+        foreach ($datas as $key => $data) {
+            if (empty($data)) {
+                unset($datas[$key]);
+            }
+        }
         $map = array(
-            'email' => 'mail',
-            'phone' => 'mobile'
+            'phone' => 'mobile',
+            'trueName' => 'displayName',
+            'rank' => 'title',
+            'gender' => 'gecos'
         );
         $datas = ArrayToolkit::rename($datas, $map);
         return ArrayToolkit::parts($datas, $this->completeAttrs);
