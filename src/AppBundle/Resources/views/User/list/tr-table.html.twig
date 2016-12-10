@@ -12,8 +12,8 @@
   {% if app.user.isAdmin() %}
   <td>{{ dict_text('professionTitle', user.professionTitle) }}</td>
   <td>{{ user.rank }}</td>
-  {% endif %}
   <td>{{ dict_text('education', user.education) }}</td>
+  {% endif %}
   <td>{{ user.phone }}</td>
   {% if user.status == 'off' %}
     <td>{{ user.quitTime|date('Y-m-d') }}</td>
