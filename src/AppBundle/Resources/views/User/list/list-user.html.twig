@@ -46,9 +46,11 @@
       <option {% if app.request.query.get('gender') == 'male' %} selected="selected"{% endif %} value="male">男</option>
       <option {% if app.request.query.get('gender') == 'female' %} selected="selected"{% endif %} value="female">女</option>
     </select>
+    {% if app.user.isAdmin() %}
     <select name="education" class="form-control search-select">
       {{ select_options(dict('education'), app.request.query.get('education'), '学历') }}
     </select>
+    {% endif %}
     <select name="key" class="form-control search-select">
       <option value="trueName" {% if app.request.query.get('key') == 'trueName' %} selected="selected"{% endif %}>姓名</option>
       <option value="number" {% if app.request.query.get('key') == 'number' %} selected="selected"{% endif %}>工号</option>
