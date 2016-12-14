@@ -106,7 +106,7 @@ class AdminController extends UserBaseController
     {
         $user = $this->getUserService()->getUser($id);
         $path = $user[$fileName];
-
+        $exit = preg_replace('/\.\w+$/', '', $path);
         if ($fileName == 'imgEducation') {
             $fileName = '学历证书';
         } elseif($fileName == 'imgRank') {
@@ -121,7 +121,7 @@ class AdminController extends UserBaseController
             Header("Content-type: application/octet-stream");
             Header("Accept-Ranges: bytes");
             Header("Accept-Length: ".filesize($path));
-            Header("Content-Disposition: attachment; filename=" . $fileName);
+            Header("Content-Disposition: attachment; filename=" . $fileName.$exit);
             echo fread($file,filesize($path));
             fclose($file);
             return new JsonResponse(true);
