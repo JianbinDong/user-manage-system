@@ -105,8 +105,9 @@ class AdminController extends UserBaseController
     public function downloadAction(Request $request, $id, $fileName)
     {
         $user = $this->getUserService()->getUser($id);
+        $basic = $this->getUserService()->getBasic($id);
         $path = $user[$fileName];
-        $exit = preg_replace('/\.\w+$/', '', $path);
+        preg_match('/\.\w+$/', $path, $exten);
         if ($fileName == 'imgEducation') {
             $fileName = '学历证书';
         } elseif($fileName == 'imgRank') {
@@ -121,7 +122,7 @@ class AdminController extends UserBaseController
             Header("Content-type: application/octet-stream");
             Header("Accept-Ranges: bytes");
             Header("Accept-Length: ".filesize($path));
-            Header("Content-Disposition: attachment; filename=" . $fileName.$exit);
+            Header("Content-Disposition: attachment; filename=" . $basic['trueName'].'-'.$fileName.$exten[0]);
             echo fread($file,filesize($path));
             fclose($file);
             return new JsonResponse(true);
