@@ -31,10 +31,15 @@ class ExportController extends UserBaseController
         $list = $this->listUsers($conditions);
         $users = $list['users'];
 
-        $title = array('员工工号','姓名','部门','职级','手机号','邮箱','性别','出生日期','民族','籍贯','身高','体重','血型','文化程度','专业','婚姻','户口所在地','邮编','身份证','职称','户口性质','户口所在地','档案存放地','与原工作的劳动关系','报道日期','政治面貌','家庭成员称呼','姓名','年龄','工作单位及岗位职务','联系电话','开始时间','结束时间','院校名称','所学专业','担任职务','开始时间','结束时间','工作单位','岗位职务','离职原因','所受培训及所具有证书','自我评价'
-        );
+        // $title = array('员工工号','姓名','部门','职级','手机号','邮箱','性别','出生日期','民族','籍贯','身高','体重','血型','文化程度','专业','婚姻','户口所在地','邮编','身份证','职称','户口性质','户口所在地','档案存放地','与原工作的劳动关系','报道日期','政治面貌','家庭成员称呼','姓名','年龄','工作单位及岗位职务','联系电话','开始时间','结束时间','院校名称','所学专业','担任职务','开始时间','结束时间','工作单位','岗位职务','离职原因','所受培训及所具有证书','自我评价'
+        // );
 
-        $keys = array('number','trueName','departmentId','rank','phone','email','gender','bornTime','nation','native','height','weight','blood','education','prefession','marriage','address','postcode','Idcard','professionTitle','householdType','residence','recordPlace','formerLaborShip','joinTime','politics','member','trueName','age','job','phone','startTime','endTime','schoolName','profession','position','startTime','endTime','company','position','leaveReason','reward','selfAssessment'
+        // $keys = array('number','trueName','departmentId','rank','phone','email','gender','bornTime','nation','native','height','weight','blood','education','prefession','marriage','address','postcode','Idcard','professionTitle','householdType','residence','recordPlace','formerLaborShip','joinTime','politics','member','trueName','age','job','phone','startTime','endTime','schoolName','profession','position','startTime','endTime','company','position','leaveReason','reward','selfAssessment'
+        // );
+
+        $title = array('员工工号','姓名','部门','职级','手机号','邮箱','性别','出生日期','民族','籍贯','身高','体重','血型','文化程度','专业','婚姻','户口所在地','毕业院校','身份证','职称','户口性质','户口所在地','档案存放地','报道日期','政治面貌'
+        );
+        $keys = array('number','trueName','departmentId','rank','phone','email','gender','bornTime','nation','native','height','weight','blood','education','prefession','marriage','address','postcode','Idcard','professionTitle','householdType','residence','recordPlace','joinTime','politics'
         );
 
         foreach ($users as $key => $user) {
@@ -44,7 +49,8 @@ class ExportController extends UserBaseController
         }
         $keys[2] = 'department';
 
-        $title = array($title, $keys);
+        // $title = array($title, $keys);
+        $title = array($title);
         $datas = array_merge($title, $users);
 
         return $datas;
