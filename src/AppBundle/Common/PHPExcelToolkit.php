@@ -31,10 +31,22 @@ class PHPExcelToolkit
                         $char = chr(39+$i);
                         $i++;
                         $activieSheet->setCellValue("A{$char}{$index}", $value);
+                        if ($value === '手机号') {
+                            $activieSheet->getColumnDimension("A{$char}")->setWidth(15);
+                        }
+                        if ($value === '身份证') {
+                            $activieSheet->getColumnDimension("{$char}")->setWidth(20);
+                        }
                     } else {
                         $char = chr(65+$i);
                         $i++;
                         $activieSheet->setCellValue("{$char}{$index}", $value);
+                        if ($value === '手机号') {
+                            $activieSheet->getColumnDimension("{$char}")->setWidth(15);
+                        }
+                        if ($value === '身份证') {
+                            $activieSheet->getColumnDimension("{$char}")->setWidth(20);
+                        }
                     }
                 }
                 $activieSheet->getRowDimension($index)->setRowHeight(18);
