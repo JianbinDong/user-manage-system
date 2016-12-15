@@ -37,9 +37,9 @@ class ExportController extends UserBaseController
         // $keys = array('number','trueName','departmentId','rank','phone','email','gender','bornTime','nation','native','height','weight','blood','education','prefession','marriage','address','postcode','Idcard','professionTitle','householdType','residence','recordPlace','formerLaborShip','joinTime','politics','member','trueName','age','job','phone','startTime','endTime','schoolName','profession','position','startTime','endTime','company','position','leaveReason','reward','selfAssessment'
         // );
 
-        $title = array('员工工号','姓名','部门','职级','手机号','邮箱','性别','出生日期','民族','籍贯','身高','体重','血型','文化程度','专业','婚姻','户口所在地','毕业院校','身份证','职称','户口性质','户口所在地','档案存放地','报道日期','政治面貌'
+        $title = array('员工工号','姓名','部门','职级','手机号','性别','出生日期','民族','籍贯','文化程度','专业','户口所在地','毕业院校','身份证','户口所在地','档案存放地','报道日期','政治面貌'
         );
-        $keys = array('number','trueName','departmentId','rank','phone','email','gender','bornTime','nation','native','height','weight','blood','education','prefession','marriage','address','postcode','Idcard','professionTitle','householdType','residence','recordPlace','joinTime','politics'
+        $keys = array('number','trueName','departmentId','rank','phone','gender','bornTime','nation','native','education','prefession','address','postcode','Idcard','residence','recordPlace','joinTime','politics'
         );
 
         foreach ($users as $key => $user) {
@@ -80,11 +80,11 @@ class ExportController extends UserBaseController
     protected function translateData($data)
     {
         $data['departmentId'] = $this->getDepartmentService()->getDepartment($data['departmentId'])['name'];
-        if ($data['marriage']) {
-            $data['marriage'] = '已婚';
-        } else {
-            $data['marriage'] = '未婚';
-        }
+        // if ($data['marriage']) {
+        //     $data['marriage'] = '已婚';
+        // } else {
+        //     $data['marriage'] = '未婚';
+        // }
 
         if ($data['gender'] == 'male'){
             $data['gender'] = '男';
