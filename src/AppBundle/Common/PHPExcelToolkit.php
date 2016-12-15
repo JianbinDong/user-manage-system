@@ -35,7 +35,7 @@ class PHPExcelToolkit
                             $activieSheet->getColumnDimension("A{$char}")->setWidth(15);
                         }
                         if ($value === '身份证') {
-                            $activieSheet->getColumnDimension("{$char}")->setWidth(20);
+                            $activieSheet->getColumnDimension("{$char}")->setWidth(25);
                         }
                     } else {
                         $char = chr(65+$i);
@@ -45,7 +45,7 @@ class PHPExcelToolkit
                             $activieSheet->getColumnDimension("{$char}")->setWidth(15);
                         }
                         if ($value === '身份证') {
-                            $activieSheet->getColumnDimension("{$char}")->setWidth(20);
+                            $activieSheet->getColumnDimension("{$char}")->setWidth(25);
                         }
                     }
                 }
